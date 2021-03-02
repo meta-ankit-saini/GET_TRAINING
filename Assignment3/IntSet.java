@@ -102,8 +102,8 @@ public class IntSet {
 	public IntSet getCompliment( ){
 		ArrayList<Integer> tempComplimentSet = new ArrayList<Integer>();
 		
-		for (int i = lowerBound ; i <= upperBound ; i++ ){
-			tempComplimentSet.add(i);
+		for (int number = lowerBound ; number <= upperBound ; number++ ){
+			tempComplimentSet.add(number);
 		}
 		
 		for (int data : set){
