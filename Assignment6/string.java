@@ -1,6 +1,13 @@
 package Assignment6;
 
+
 public class string {
+	/**
+	 * method to compare two strings
+	 * @param str1
+	 * @param str2
+	 * @return boolean representing if strings are equal or not
+	 */
 	public static boolean compare(String str1 , String str2){
 		if ( str1.length() == str2.length() ){
 			for (int i = 0 ; i < str1.length() ; i++ ) {
@@ -13,6 +20,11 @@ public class string {
 		return false;
 	}
 	
+	/**
+	 * method to reverse string
+	 * @param str
+	 * @return reversed string
+	 */
 	public static String reverse(String str){
 		int len = str.length();
 		char temp;
@@ -25,6 +37,11 @@ public class string {
 		return new String(tempCharArray);
 	}
 	
+	/**
+	 * method to reverse cases of string
+	 * @param str
+	 * @return string with reverse case
+	 */
 	public static String reverseCase(String str){
 		int len = str.length();
 		char[] tempCharArray = str.toCharArray(); 
@@ -42,7 +59,11 @@ public class string {
 		return new String(tempCharArray);
 	}
 	
-	
+	/**
+	 * method to find largest word
+	 * @param str
+	 * @return word with largest length
+	 */
 	public static String largestWordInString(String str){
 		int maxLength = 0;
 		String wordWithMaxLength = "";
