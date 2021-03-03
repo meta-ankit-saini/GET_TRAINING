@@ -65,8 +65,8 @@ public class Search {
 		
 		int[] array = new int[noOfElements];
 		System.out.println("Enter no of Elements");
-		for (int i = 0; i < noOfElements; i++ ){
-			array[i] = scan.nextInt();
+		for (int currElement = 0; currElement < noOfElements; currElement++ ){
+			array[currElement] = scan.nextInt();
 		}
 		System.out.println("Enter Element to search");
 		key = scan.nextInt();

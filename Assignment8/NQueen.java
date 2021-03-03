@@ -76,18 +76,12 @@ public class NQueen {
 	
 	public static void main(String[] args){
 		Scanner scan = new Scanner(System.in);
-		int N;
 		System.out.println("Enetr dimension of Board : ");
-		N = scan.nextInt();
+		int N = scan.nextInt();
 		int[][] board = new int[N][N];
 		
-		// initializing the board
-	    for(int currRow = 0; currRow < N; currRow++)
-	        for(int currCol = 0; currCol < N; currCol++)
-	            board[currRow][currCol] = 0;
-	    
-	    NQueen q = new NQueen();
-	    System.out.print("Is Possible to place queens : "+q.nQueen(board, 0, N));
+	    	NQueen q = new NQueen();
+	    	System.out.print("Is Possible to place queens : "+q.nQueen(board, 0, N));
 	}
 }
 
