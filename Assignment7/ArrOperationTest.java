@@ -4,6 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Test Class for ArrOperation
+ * @author ankit.saini_metacube
+ *
+ */
 public class ArrOperationTest {
 
 	@Test
@@ -40,7 +45,6 @@ public class ArrOperationTest {
 		
 		int[] arr3 = {1,1,1,1,1};
 		assertEquals(1, arrOperation.countClumps(arr3));
-
 	}
 	
 	/**
@@ -91,7 +95,6 @@ public class ArrOperationTest {
 		ArrOperation arrOperation = new ArrOperation();
 		int[] arr1 = {} ;
 		arrOperation.countClumps(arr1);
-	
 	}
 	
 	/**

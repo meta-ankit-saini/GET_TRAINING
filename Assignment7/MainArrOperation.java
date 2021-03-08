@@ -1,16 +1,52 @@
 package Assignment7;
 
+import java.util.Scanner;
+
+/**
+ * Main Class for ArrOperation
+ * @author ankit.saini_metacube
+ *
+ */
 public class MainArrOperation {
+
+	/**
+	 * method for taking array input
+	 * @return -> array
+	 */
+	public static int[] inputArray(){
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter no Of elements in array");
+		int noOfElement = scan.nextInt();
+		int[] arr = new int[noOfElement];
+		
+		for(int indexOfElement = 0 ;indexOfElement < noOfElement ; indexOfElement++){
+			arr[indexOfElement] = scan.nextInt();
+		}
+		return arr;
+	}
+	
 	public static void main(String []args){
+		Scanner scan = new Scanner(System.in);
 		ArrOperation arrOperation = new ArrOperation();
-//		System.out.println("Enter");
-		int[] arr = {1, 2, 3, 8, 9, 3, 2, 1};
-		System.out.print(arrOperation.maxMirror(arr));
-		int[] arr2 = {1, 1 ,1, 1, 1, 1};
-		System.out.print(arrOperation.countClumps(arr2));
-		int[] arr3 = {5, 4, 9, 4, 9, 5};
-		System.out.print(arrOperation.fixXY(arr3, 4, 5));
-		int[] arr4 = {1, 1, 1, 2, 1};
-		System.out.print(arrOperation.splitArray(arr4));
+		
+		System.out.println("MaxMirror :" );
+		int[] arr1 = inputArray(); 
+		System.out.println("length of Max mirror"+arrOperation.maxMirror(arr1));
+		
+		System.out.println("Count Clumps :" );
+		int[] arr2 = inputArray();
+		System.out.println("Clumps "+arrOperation.countClumps(arr2));
+		
+		System.out.println("fixXY :" );
+		int[] arr3 = inputArray();
+		System.out.println("enter X : ");
+		int X = scan.nextInt();
+		System.out.println("enter Y : ");
+		int Y = scan.nextInt();
+		System.out.println("fixXY : "+arrOperation.fixXY(arr3, X, Y));
+		
+		System.out.println("Split Array :" );
+		int[] arr4 = inputArray();
+		System.out.println("index : " + arrOperation.splitArray(arr4));
 	}
 }

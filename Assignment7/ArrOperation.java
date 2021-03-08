@@ -1,6 +1,17 @@
 package Assignment7;
+
+/**
+ * class for performing different operations in Array
+ * @author ankit.saini_metacube
+ *
+ */
 public class ArrOperation {
 	
+	/**
+	 * method for computing sum of array
+	 * @param arr
+	 * @return -> Integer representing sum of array
+	 */
 	public int sumOfArray(int[] arr ){
 		int sum = 0;
 		for(int indexOfArray = 0; indexOfArray < arr.length; indexOfArray++){
@@ -9,6 +20,11 @@ public class ArrOperation {
 		return sum;
 	}
 	
+	/**
+	 * method for computing sum of array the size of the largest mirror section found in the input array.
+	 * @param arr  -> Array 
+	 * @return integer representing the size of the largest mirror section found in the input array.
+	 */
 	public int maxMirror(int[] arr){
 		if(arr.length == 0 ){
 			throw new AssertionError("Empty Array") ;
@@ -35,8 +51,11 @@ public class ArrOperation {
 		return maxMirrorSize;
 	}
 	
-
-	
+	/**
+	 * Method to find number of clumps in array.Clump in an array is a series of 2 or more adjacent elements of the same value.
+	 * @param arr in[] , Integer Array
+	 * @return -> Number of Clumps
+	 */
 	public int countClumps(int[] arr){
 		if(arr.length == 0 ){
 			throw new AssertionError("Empty Array") ;
@@ -60,6 +79,13 @@ public class ArrOperation {
 		return noOfClumps;
 	}
 	
+	/**
+	 * Find an array that contains exactly the same numbers as the input array, but rearranged so that every X is immediately followed by a Y.
+	 * @param arr -> Input Array
+	 * @param X 
+	 * @param Y 
+	 * @return -> Required Array after rearrangement
+	 */
 	public int[] fixXY(int[] arr, int X, int Y) {
 		
 		if(arr.length == 0 ){
@@ -105,6 +131,11 @@ public class ArrOperation {
 		return arr;
 	}
 	
+	/**
+	 ** Method to check if array can be splitted into two parts where sum of both parts is equal.
+	 * @param arr -> Input Array
+	 * @return -> index if array can be seperated if not -1
+	 */
 	public int splitArray(int[] arr) {
 		if(arr.length == 0){
 			throw new AssertionError("Empty Array") ;
