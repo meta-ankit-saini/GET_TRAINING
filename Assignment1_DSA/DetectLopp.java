@@ -1,26 +1,36 @@
 package Assignment1_DSA;
 
+/**
+ * class for loop detection in linked list
+ * @author ankit.saini_metacube
+ *
+ */
 public class DetectLopp {
-	public static Node detectloop(Node head){
+	/**
+	 * method for loop detection
+	 * @param head -> header of linked list
+	 * @return -> true if loop detected
+	 */
+	public static boolean detectloop(Node head){
 		if(head == null || head.next == null){
-			return null;
+			return false;
 		}
 		Node slowNode = head , fastNode = head;
 		while (fastNode != null){
 			
 			slowNode = slowNode.next;
 			if (fastNode.next == null){
-				return null;
+				return false;
 			}
 			else{
 				fastNode = fastNode.next.next;
 			}
 
 			if (slowNode == fastNode){
-				return slowNode; 
+				return true; 
 			}
 		}
-		return null;
+		return false;
 	}
 	
 
@@ -42,7 +52,7 @@ public class DetectLopp {
 		Node node8 = new Node(8);
 		node7.next = node8;
 		node8.next = node3;
-		if(detectloop(head)!= null){
+		if(detectloop(head)){
 			System.out.print("Detected");
 		}
 		else{
