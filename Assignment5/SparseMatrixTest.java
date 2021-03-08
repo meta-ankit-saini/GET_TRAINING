@@ -7,8 +7,16 @@ import java.util.Map;
 
 import org.junit.Test;
 
+/**
+ * test class of Sparse Matrix
+ * @author ankit.saini_metacube
+ *
+ */
 public class SparseMatrixTest {
 
+	/**
+	 * Method For testing Sparse Matrix Methods Result
+	 */
 	@Test
 	public void Test() {
 		
@@ -93,6 +101,8 @@ public class SparseMatrixTest {
 		result4.put(new Key(3,2), 445);
 		result4.put(new Key(3,3), 25);
 		SparseMatrix resultsparseMatrix5 = new SparseMatrix(4,4,result4);
+		resultsparseMatrix5.printSparseMatrix();
+		sparseMatrix1.multiplySparseMatrix(sparseMatrix2).printSparseMatrix();
         assertEquals(resultsparseMatrix5, sparseMatrix1.multiplySparseMatrix(sparseMatrix2));
 	}
 	
@@ -153,7 +163,6 @@ public class SparseMatrixTest {
 		
 		SparseMatrix sparseMatrix1 = new SparseMatrix(4,4,matrix1);
 		SparseMatrix sparseMatrix2 = new SparseMatrix(5,5,matrix2);
-		
 		
 		//Test For Multiplication
 		sparseMatrix1.multiplySparseMatrix(sparseMatrix2);

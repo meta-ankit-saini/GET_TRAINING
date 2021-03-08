@@ -7,6 +7,11 @@ import java.util.Scanner;
 import javax.lang.model.type.NoType;
 import javax.swing.text.StyleContext.SmallAttributeSet;
 
+/**
+ * class for Sparse Matrix methods
+ * @author ankit.saini_metacube
+ *
+ */
 public class SparseMatrix {
     private final Map<Key , Integer> sparseMatrix;
 	
@@ -58,17 +63,32 @@ public class SparseMatrix {
 			return false;
 		return true;
 	}
-
+	
+	/**
+	 * constructor for storing data of sparse matrix
+	 * @param noOfRowS -> no of rows in Matrix 
+	 * @param noOfColumns -> no of columns in Matrix 
+	 * @param sparseMatrix -> sparse matrix created from createSparseMatrix method of MainSparseMatrix class of type Map<Key,Integer>
+	 */
 	public SparseMatrix( int noOfRows , int noOfColumns , Map<Key , Integer> sparseMatrix ){
 		this.sparseMatrix  = new LinkedHashMap<>(sparseMatrix);
 		this.noOfRows = noOfRows;
 		this.noOfColumns = noOfColumns;
 	}
 	
+	/**
+	 * 
+	 * @return -> Sparse Matrix of type Map<Key,Integer>
+	 */
 	public LinkedHashMap<Key , Integer> getSparseMatrix(){
 		return new LinkedHashMap<Key , Integer>(sparseMatrix);
 	}
 	
+	/**
+	 * method for getting element at key location
+	 * @param key of Key type
+	 * @return -> element of Integer type at key location 
+	 */
 	public int get(Key key){
 		if (sparseMatrix.containsKey(key)){
 			return sparseMatrix.get(key);
@@ -76,6 +96,9 @@ public class SparseMatrix {
 		return 0;
 	}
 	
+	/**
+	 * method for printing Matrix
+	 */
 	public void printSparseMatrix(){ 
 		Key key = new Key();
 		for(Integer indexOfX = 0 ; indexOfX < noOfRows ; indexOfX ++){
@@ -93,6 +116,10 @@ public class SparseMatrix {
 		}
 	}
 	
+	/**
+	 * method for computing transpose of sparse matrix
+	 * @return -> transposed Sparse matrix 
+	 */
 	public SparseMatrix getTransposeSparseMatrix(){
 		Map<Key , Integer> transposeSparseMatrix = new LinkedHashMap<Key , Integer>();
 		for (Key key : sparseMatrix.keySet()){
@@ -123,6 +150,11 @@ public class SparseMatrix {
 		return true;
 	}
 	
+	/**
+	 * method for adding two Sparse Matrix
+	 * @param sparseMatrix2
+	 * @return Sparse matrix containing addition result  
+	 */
 	public SparseMatrix addSparseMatrix(SparseMatrix sparseMatrix2){
 		if(this.noOfRows != sparseMatrix2.noOfRows || this.noOfColumns != sparseMatrix2.noOfColumns){
 			throw new AssertionError("Dimension doesn't match ");
@@ -143,6 +175,11 @@ public class SparseMatrix {
 		return new SparseMatrix(noOfRows, noOfColumns, resultantSparseMatrix);
 	}
 	
+	/**
+	 * method for multiplying two Sparse Matrix
+	 * @param sparseMatrix2
+	 * @return Sparse matrix containing multiplicationtion result
+	 */
 	public SparseMatrix multiplySparseMatrix(SparseMatrix sparseMatrix2){
 		if(this.noOfColumns != sparseMatrix2.noOfRows){
 			throw new AssertionError("Invalid Shape");
@@ -170,6 +207,6 @@ public class SparseMatrix {
 			}
 		}
 		return new SparseMatrix(this.noOfRows, sparseMatrix2.noOfColumns, resultantSparseMatrix);
-		}
+	}
 	
 }

@@ -3,6 +3,11 @@ package Assignment5;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * class representing (row,col)->position of array
+ * @author ankit.saini_metacube
+ *
+ */
 public class Key {
 	int row;
 	int col;
