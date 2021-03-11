@@ -16,7 +16,7 @@ public class Polynomial1 {
 	 * @return -> integer , degree of polynomial
 	 */
 	public static int degree(int[][] polyArray ){
-		int noOfRow = noOfTerms , noOfCol = noOfVariable , degree = 0 , tempDegree;
+		int noOfRow = noOfTerms , noOfCol = noOfVariable + 1 , degree = 0 , tempDegree;
 		for (int currRow = 0 ; currRow < noOfRow ; currRow ++){
 			tempDegree = 0;
 			for ( int currCol = 1 ; currCol < noOfCol  ; currCol++){
