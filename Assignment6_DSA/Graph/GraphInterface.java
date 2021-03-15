@@ -7,7 +7,7 @@ public interface GraphInterface {
 	
 	public ArrayList<Integer> reachable(Integer node);
 	
-	public int[] mst(Integer node);
+	public void mst(Integer node);
 	
-	public int[] shortestPath(Integer node1 , Integer node2);
+	public void shortestPath(Integer node1 , Integer node2);
 }

@@ -44,11 +44,12 @@ public class MainGraph {
 		System.out.println(edgeList.length);
 		printEdgeList(edgeList);
 		Graph graph = new Graph(edgeList);
-//		System.out.print(graph.connectedCompenents());
-//		System.out.print(graph.isConnected());
-//		System.out.print(graph.reachable(1));
-		for (int b : graph.mst(1))
-			System.out.print(b);
-
+		System.out.println("Is connected : "+graph.isConnected());
+		System.out.println("Reachable : "+graph.reachable(1));
+		System.out.println("Shortest Path ");
+		graph.shortestPath(1, 4);
+		System.out.println();
+		System.out.println("MST :  ");
+		graph.mst(1);
 	}
 }

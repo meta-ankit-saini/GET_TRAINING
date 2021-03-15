@@ -8,7 +8,7 @@ public class Graph implements GraphInterface{
 	private boolean[] visited;
 	private int[] dist;
 	private PriorityQueue pQueue;
-	private int[][]  path;
+	private LinkedList[]  path;
 	private int[] prims;
 	
 	public Graph(GraphEdgeList[] edgeList ){
@@ -17,20 +17,17 @@ public class Graph implements GraphInterface{
 		dist = new int[edgeList.length];
 		prims = new int[edgeList.length];
 		pQueue = new PriorityQueue();
-		path = new int[edgeList.length][edgeList.length];
-//		System.out.println(visited.length);
+		path = new LinkedList[edgeList.length];
 	}
 	
 	public void dfs(int node){
 		visited[node] = true;
-//		System.out.println(node);
 		for (int child : edgeList[node].getEdgeArrayOfGraph())
 			if(!visited[child])
 				dfs(child);
 	}
 	
 	public int connectedCompenents() {
-		// TODO Auto-generated method stub
 		int cc = 0;
 		for (int index = 1 ; index < visited.length ; index++){
 			visited[index] = false;
@@ -75,13 +72,9 @@ public class Graph implements GraphInterface{
 		return reachable;
 	}
 	
-	
-	
-	@Override
-	public int[] mst(Integer src) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < edgeList.length; i++){ 
-            dist[i] = Integer.MAX_VALUE; 
+	public void primsAlgo(Integer src){
+		for (int index = 0; index < edgeList.length; index++){ 
+            dist[index] = Integer.MAX_VALUE; 
 		}
 		for (int index = 1 ; index < visited.length ; index++){
 			visited[index] = false;
@@ -90,12 +83,10 @@ public class Graph implements GraphInterface{
         dist[src] = 0; 
         
         while (!pQueue.isEmpty()) { 
-        	pQueue.printQueue();
             PriorityNode tempNode = pQueue.deQueue();
             int currNode = (int) tempNode.getData(); 
             int currDist = Math.abs(tempNode.getPriority());
             visited[currNode] = true;
-//            System.out.print(currNode);
             for(GraphNode node : edgeList[currNode].getArrayOfGraphNodes() ){
             	if((!visited[node.edge]) &&  dist[node.edge] > node.weight){
             		dist[node.edge] = node.weight;
@@ -104,37 +95,49 @@ public class Graph implements GraphInterface{
             	}
             }
         }
-		return prims;
+	}
+	
+	@Override
+	public void mst(Integer src) {
+		// TODO Auto-generated method stub
+		primsAlgo(src);
+		for (int index = 1 ; index < visited.length ; index++){
+			if(prims[index] != 0){
+				System.out.println(prims[index] + "->" + index);;
+			}
+		}
 	}
 
 	
 	public void dijkstra(int src) {  
-		for (int i = 0; i < edgeList.length; i++){ 
-            dist[i] = Integer.MAX_VALUE; 
+		for (int index = 0; index < edgeList.length; index++){ 
+            dist[index] = Integer.MAX_VALUE; 
 		}
-        pQueue.enQueue(new PriorityNode(src, 0));  
+		for (int index = 0; index < edgeList.length; index++){ 
+            path[index] = new LinkedList(); 
+		}
+		pQueue.enQueue(new PriorityNode(src, 0));  
         dist[src] = 0; 
         while (!pQueue.isEmpty()) { 
             PriorityNode tempNode = pQueue.deQueue();
             int currNode = (int) tempNode.getData(); 
             int currDist = Math.abs(tempNode.getPriority());
-//            path[currNode][currNode] = 1;
-//            System.out.println("currNode : " + currNode);
             for(GraphNode node : edgeList[currNode].getArrayOfGraphNodes() ){
             	if (currDist + node.weight < dist[node.edge]){
             		dist[node.edge] = currDist + node.weight;
             		pQueue.enQueue(new PriorityNode(node.edge, - (dist[node.edge])));
-//            		System.out.println("node : " + node.edge);
-            		path[node.edge][currNode] = 1;
+            		path[node.edge].insert(currNode);;
             	}
             }
         } 
     } 
 	
 	@Override
-	public int[] shortestPath(Integer src, Integer destination) {
+	public void shortestPath(Integer src, Integer dest) {
 		dijkstra(src);
-		return  path[destination];
+		System.out.print(src+"->");
+		path[dest].printList();
+		System.out.print(dest+"       " +"   Distance: " +dist[dest]);
 	}
 
 }

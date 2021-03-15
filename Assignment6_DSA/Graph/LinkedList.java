@@ -25,6 +25,16 @@ public class LinkedList {
 		return head;
 	}
 	
+	public void printList(){
+		if(head == null){
+			return;
+		}
+		Node node = head;
+		while (node != null){
+			System.out.print(node.data+"->");
+			node = node.next;
+		}
+	}
 	
 }
 

@@ -6,10 +6,6 @@ public class EmployeeNode {
 	String id;
 	EmployeeNode next;
 	
-	public EmployeeNode(){
-		
-	}
-	
 	public EmployeeNode(String id , Double salary , int age) {
 		this.id = id;
 		this.age = age;
