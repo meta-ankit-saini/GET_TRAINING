@@ -2,7 +2,11 @@ package Asssignment4_DSA;
 
 import java.util.Scanner;
 import java.util.Stack;
-
+/**
+ * class for finding mass of organic compound 
+ * @author ankit.saini_metacube
+ *
+ */
 public class OrganicCompoundMass {
 
 	public static int massOf(char character){
@@ -16,19 +20,23 @@ public class OrganicCompoundMass {
 		throw new AssertionError("invalid input");
 	}
 	
+	/**
+	 * function to compute organic comound's mass
+	 * @param compound
+	 * @return
+	 */
 	public static int computeCompoundWeight(String compound) {  
 		char[] charArray = compound.toCharArray();
 	    int result = 0;
 	    int index = 0;
 	    while(index < charArray.length){
+	    	// condition if char is '('
 	    	if (charArray[index] == '('){
 	    		int tempResult1 =  0;
 	    		index += 1;
 	            while (index  < charArray.length && charArray[index] != ')'){
 	            	tempResult1 += massOf(charArray[index]);
-//	            	System.out.print(index);
-//	            	System.out.println(" TempRes : " + tempResult);
-	                index += 1;
+	            	index += 1;
 	            }
 	            if((index + 1)  < charArray.length && (charArray[index + 1] >= '0' && charArray[index + 1] <= '9') ){
 	        		  String number1 = "";
@@ -42,13 +50,11 @@ public class OrganicCompoundMass {
 	        	  }
 	            
 	            result += tempResult1;
-//	            System.out.println(" TempRes : " + tempResult);
 	        }
 	        else{
+	        	  //character other than '('
 	        	  int tempResult2 = 0;
 	        	  tempResult2 +=  massOf(charArray[index]);
-//	        	  System.out.println("else : "  + index);
-//	        	  System.out.println(" Res : " + result);
 	        	  if((index + 1)  < charArray.length && (charArray[index + 1] >= '0' && charArray[index + 1] <= '9') ){
 	        		  String number2 = "";
 	        		  index += 1;

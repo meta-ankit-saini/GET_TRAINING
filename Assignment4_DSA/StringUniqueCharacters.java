@@ -2,10 +2,18 @@ package Asssignment4_DSA;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-
+/**
+ * class to keep track of unique character
+ * @author ankit.saini_metacube
+ *
+ */
 public class StringUniqueCharacters {
 	HashMap<Character,Integer> characterMap = new HashMap<Character, Integer>();
 	
+	/**
+	 * method to keep track of unique character 
+	 * @param input
+	 */
 	public void updateUniqueCharacters(String input){
 		if (input == null){
 			System.out.print("empty string");
@@ -22,6 +30,9 @@ public class StringUniqueCharacters {
 		}
 	}
 	
+	/**
+	 * method to print unique character
+	 */
 	public void printUniqueCharecterWithOccurance(){
 		if(characterMap.size() == 0){
 			System.out.print("empty map");

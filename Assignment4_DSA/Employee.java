@@ -1,4 +1,10 @@
 package Asssignment4_DSA;
+
+/**
+ * class for storing Employee property and METHODS
+ * @author ankit.saini_metacube
+ *
+ */
 public class Employee {
 	private int empployeeId ;
 	private String name ,address;

@@ -7,8 +7,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * class for creating collection of employee
+ * @author ankit.saini_metacube
+ *
+ */
 public class EmployeeOperation {
 	
+	/**
+	 * method to print employee collection
+	 * @param employeeCollection
+	 */
 	public static void printEmployeesListCollection(ArrayList<Employee> employeeCollection){
 		if(employeeCollection.size() == 0){
 			System.out.println("Collection is empty");
@@ -22,6 +31,10 @@ public class EmployeeOperation {
 		}
 	}
 	
+	/**
+	 * method to sort collection by id 
+	 * @param employeeCollection
+	 */
 	public static void sortCollectionByNaturalOrder(ArrayList<Employee> employeeCollection){
 		class EmployeeIdComparator implements Comparator<Employee>{
 			@Override
@@ -32,6 +45,10 @@ public class EmployeeOperation {
 		Collections.sort((List<Employee>) employeeCollection , new EmployeeIdComparator() );
 	}
 	
+	/**
+	 * method to sort collection by name
+	 * @param employeeCollection
+	 */
 	public static void sortCollectionByEmployeeName(ArrayList<Employee> employeeCollection){
 		class EmployeeNameComparator implements Comparator<Employee>{
 			@Override
@@ -42,6 +59,11 @@ public class EmployeeOperation {
 		Collections.sort((List<Employee>) employeeCollection , new EmployeeNameComparator() );
 	}
 	
+	/**
+	 * method to remove duplicate elements
+	 * @param employeeCollection
+	 * @return
+	 */
 	public static Set<Employee> createEmployeeSet(ArrayList<Employee> employeeCollection){
 		Set<Employee> set = new HashSet<Employee> (); 
 		for(Employee employee : employeeCollection)
