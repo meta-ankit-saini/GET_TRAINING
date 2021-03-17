@@ -43,18 +43,34 @@ public class LinkedListQuickSort {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return -> head of linked list
+	 */
 	public EmployeeNode getHead(){
 		return head;
 	}
 	
+	/**
+	 * 
+	 * @return -> last of linked list
+	 */
 	public EmployeeNode getLast(){
 		return last;
 	}
 	
+	/**
+	 * helper method for quick sort -> replaces head to head of sorted list   
+	 */
 	public void sortList() {
         head = sort(head);
     }
     
+	/**
+	 * perform quick sort
+	 * @param head
+	 * @return
+	 */
     private EmployeeNode sort(EmployeeNode head) {
         if (head == null) return null;
         EmployeeNode leftHead = new EmployeeNode(null,1000000.,10000), midHead = new EmployeeNode(null,1000000.,10000), rightHead = new EmployeeNode(null,1000000.,10000);
@@ -81,6 +97,11 @@ public class LinkedListQuickSort {
         return leftHead.next;
     }
     
+    /**
+     * method to find tail of linked list
+     * @param head
+     * @return
+     */
     private EmployeeNode findTail(EmployeeNode head) {
         while(head != null && head.next != null) {
             head = head.next;

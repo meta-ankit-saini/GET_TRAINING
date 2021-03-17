@@ -3,6 +3,11 @@ package Asssignment6_DSA;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * class to perform operation on graph
+ * @author ankit.saini_metacube
+ *
+ */
 public class Graph implements GraphInterface{
 	private GraphEdgeList[] edgeList;
 	private boolean[] visited;
@@ -20,6 +25,10 @@ public class Graph implements GraphInterface{
 		path = new LinkedList[edgeList.length];
 	}
 	
+	/**
+	 * function for depth first search traversal
+	 * @param node -> current node position
+	 */
 	public void dfs(int node){
 		visited[node] = true;
 		for (int child : edgeList[node].getEdgeArrayOfGraph())
@@ -27,6 +36,10 @@ public class Graph implements GraphInterface{
 				dfs(child);
 	}
 	
+	/**
+	 * function to count no of connected components
+	 * @return -> no of connected components
+	 */
 	public int connectedCompenents() {
 		int cc = 0;
 		for (int index = 1 ; index < visited.length ; index++){
@@ -72,6 +85,10 @@ public class Graph implements GraphInterface{
 		return reachable;
 	}
 	
+	/**
+	 * function to find mst using prims algo
+	 * @param src -> Source node
+	 */
 	public void primsAlgo(Integer src){
 		for (int index = 0; index < edgeList.length; index++){ 
             dist[index] = Integer.MAX_VALUE; 
@@ -108,7 +125,10 @@ public class Graph implements GraphInterface{
 		}
 	}
 
-	
+	/**
+	 * function to find shortest path using dijkastra 
+	 * @param src -> source node
+	 */
 	public void dijkstra(int src) {  
 		for (int index = 0; index < edgeList.length; index++){ 
             dist[index] = Integer.MAX_VALUE; 

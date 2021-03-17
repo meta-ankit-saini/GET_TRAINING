@@ -1,5 +1,11 @@
 package Asssignment6_DSA;
 
+/**
+ * Class For Node of the Priority Queue
+ * @author ankit.saini_metacube
+ *
+ * @param <T>
+ */
 public class PriorityNode<T> {
 
 	private Object data;

@@ -1,5 +1,9 @@
 package Asssignment6_DSA;
-
+/**
+ * Class for the Node of LinkedList 
+ * @author ankit.saini_metacube
+ *
+ */
 public class EmployeeNode {
 	int age;
 	Double salary;

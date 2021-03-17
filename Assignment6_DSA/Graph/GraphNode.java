@@ -2,6 +2,11 @@ package Asssignment6_DSA;
 
 import java.util.Comparator;
 
+/**
+ * Class for the Node of the graph 
+ * @author ankit.saini_metacube
+ *
+ */
 public class GraphNode implements Comparator<GraphNode> {
 	int edge , weight;
 	GraphNode  next;
@@ -11,6 +16,9 @@ public class GraphNode implements Comparator<GraphNode> {
 		next = null;
 	}
 	
+	/**
+	 * overriding compare for further use
+	 */
 	@Override
 	public int compare(GraphNode node1, GraphNode node2) 
     { 

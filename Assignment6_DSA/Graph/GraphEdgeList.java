@@ -1,5 +1,10 @@
 package Asssignment6_DSA;
 
+/**
+ * class for creating adjacency list for graph
+ * @author ankit.saini_metacube
+ *
+ */
 public class GraphEdgeList {
 	private GraphNode head , last;
 	private int size = 0 ;
@@ -24,6 +29,10 @@ public class GraphEdgeList {
 		return head;
 	}
 	
+	/**
+	 * method to get graph nodes array
+	 * @return -> array of graph nodes
+	 */
 	public GraphNode[] getArrayOfGraphNodes(){
 		GraphNode[] array = new GraphNode[size];
 		int index = 0;
@@ -38,6 +47,10 @@ public class GraphEdgeList {
 		return array;
 	}
 	
+	/**
+	 * method to get graph edge array
+	 * @return -> array of graph edge
+	 */
 	public int[] getEdgeArrayOfGraph(){
 		int[] array = new int[size];
 		int index = 0;

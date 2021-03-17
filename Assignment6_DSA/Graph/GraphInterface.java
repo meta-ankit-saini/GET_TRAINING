@@ -2,6 +2,11 @@ package Asssignment6_DSA;
 
 import java.util.ArrayList;
 
+/**
+ * Interface for Graph Class
+ * @author ankit.saini_metacube
+ *
+ */
 public interface GraphInterface {
 	public boolean isConnected();
 	

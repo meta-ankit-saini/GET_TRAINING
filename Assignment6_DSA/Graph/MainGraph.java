@@ -2,8 +2,19 @@ package Asssignment6_DSA;
 
 import java.util.Scanner;
 
+/**
+ * Main Class to check the  functionality of Graph
+ * @author ankit.saini_metacube
+ *
+ */
 public class MainGraph {
 	
+	/**
+	 * 
+	 * @param noOfNode
+	 * @param noOfEdge
+	 * @return -> EdgeList Representation of Graph
+	 */
 	public static GraphEdgeList[] createGraphUsingEdgeList(int noOfNode , int noOfEdge){
 		Scanner scan = new Scanner(System.in);
 		GraphEdgeList[] edgeList = new  GraphEdgeList[noOfNode + 1];
@@ -24,6 +35,10 @@ public class MainGraph {
 		return edgeList;
 	}
 	
+	/**
+	 * method to print the EdgeList Representation of graph
+	 * @param edgeList
+	 */
 	public static void printEdgeList(GraphEdgeList[] edgeList){
 		for (int index = 1; index  <edgeList.length ; index++){
 			System.out.print(index+"   ");
