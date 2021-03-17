@@ -20,13 +20,13 @@ public class ShapeFactory {
 		}
 		Shape shape = null;
 		
-		
+		//shapeType should be one of the constants from enum
 		switch (ShapeType.valueOf(shapeType)) { 
-        case Circle : shape = new Square(origin,shapeParameters[0]);
-            		  break; 
-        case Square : shape = new Square(origin,shapeParameters[0]);
-           			  break;  
-        default     : throw new AssertionError("ShapeType Not Supported");
+        	case Circle : shape = new Square(origin,shapeParameters[0]);
+            		  	  break; 
+        	case Square : shape = new Square(origin,shapeParameters[0]);
+           			  	  break;  
+        	default     : throw new AssertionError("ShapeType Not Supported");
         } 
 		return shape;
 	}
