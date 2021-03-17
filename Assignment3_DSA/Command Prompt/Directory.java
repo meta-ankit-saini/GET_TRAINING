@@ -8,20 +8,30 @@ public class Directory {
 	private String name;
 	private ArrayList<Directory> subDirectories;
 	
-	public Directory(String path, Directory parentDirectory) {
-		this.name = null;
-		this.path = path;
+	public Directory(String name, Directory parentDirectory) {
+		this.name = name;
 		this.parentDirectory = parentDirectory;
+		this.path = setPath();
 		this.subDirectories =  new ArrayList<Directory>();
 	}
 		
-		
+	public String setPath(){
+		String temp = "";
+		Directory currDirectory = parentDirectory;
+		while(currDirectory != null){
+			temp =  currDirectory.getName() + "//" + temp ;
+			currDirectory = currDirectory.getParentDirectory();
+		}
+		temp = "://" + temp + name;
+		return temp;
+	}
+	
 	public String getPath(){
 		return path;
 	}
 	
 	public String getName(){
-		return path;
+		return name;
 	}
 	
 	public void changeName(String name){
@@ -47,17 +57,17 @@ public class Directory {
 		subDirectories.remove(directory);
 	}
 	
-	public Directory findDirectory(String path){
+	public Directory findDirectory(String name){
 		for (Directory direcory : subDirectories){
-			if(path.equals(direcory.path))
+			if(name.equals(direcory.name))
 				return direcory;
 		}
 		return null;
 	}
 	
-	public boolean checkAvailabality(String path){
+	public boolean checkAvailabality(String name){
 		for (Directory direcory : subDirectories){
-			if(path.equals(direcory.path))
+			if(path.equals(direcory.name))
 				return false;
 		}
 		return true;

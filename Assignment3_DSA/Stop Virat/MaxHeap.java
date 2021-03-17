@@ -49,7 +49,12 @@ public class MaxHeap {
 	private Bowler parent(int childIndex) {
 	    return heap[getParentIndex(childIndex)];
 	}
-
+	
+	private boolean isLeaf(int pos) { 
+    
+        return (!hasLeftChild(pos) && !hasRightChild(pos)); 
+    } 
+	
 	private void swap(int index1, int index2) {
 	    Bowler element = heap[index1];
 	    heap[index1] = heap[index2];
@@ -80,7 +85,7 @@ public class MaxHeap {
 	}
 
 	  // Time Complexity : O( Log n)
-	public void poll() {
+	public Bowler poll() {
 	    if (size == 0) {
 	      throw new NoSuchElementException();
 	    }
@@ -89,28 +94,31 @@ public class MaxHeap {
 
 	    heap[0] = heap[size - 1];
 	    size--;
-	    heapifyDown();
+	    maxHeapify(0);
+	    return element;
 	}
 
-	private void heapifyDown() {
-	    int index = 0;
-
-	    while (hasLeftChild(index)) {
-	      int smallestChildIndex = getLeftChildIndex(index);
-
-	      if (hasRightChild(index) && rightChild(index).getNoOfBallsLeft() < leftChild(index).getNoOfBallsLeft()) {
-	        smallestChildIndex = getRightChildIndex(index);
-	      }
-
-	      if (heap[index].getNoOfBallsLeft() < heap[smallestChildIndex].getNoOfBallsLeft()) {
-	        swap(index, smallestChildIndex);
-	      } else {
-	        break;
-	      }
-	      index = smallestChildIndex;
-	    }
-	 }
-
+	private void maxHeapify(int pos) 
+    { 
+        if (isLeaf(pos)) 
+            return; 
+  
+        if (heap[pos].getNoOfBallsLeft() < leftChild(pos).getNoOfBallsLeft() 
+            || heap[pos].getNoOfBallsLeft() < rightChild(pos).getNoOfBallsLeft()) { 
+  
+            if (leftChild(pos).getNoOfBallsLeft() > rightChild(pos).getNoOfBallsLeft()) { 
+                swap(pos, getLeftChildIndex(pos)); 
+                maxHeapify(getLeftChildIndex(pos)); 
+            } 
+            else { 
+                swap(pos, getRightChildIndex(pos)); 
+                maxHeapify(getRightChildIndex(pos)); 
+            } 
+        } 
+    } 
+  
+	 
+	
 	 private void heapifyUp() {
 	    int index = size - 1;
 
@@ -128,10 +136,10 @@ public class MaxHeap {
 	 
 	 public ArrayList<String>  minRuns(){
 		 ArrayList<String> order = new ArrayList<String>();
-		 while(heap[0].getNoOfBallsLeft() != 0){
-			 heap[0].subtractNoOFBalls(1);
-			 order.add(heap[0].getName());
-			 heapifyUp();
+		 while(peek().getNoOfBallsLeft() > 0){
+			 Bowler bowler = this.poll();
+			 order.add(bowler.getName());
+			 this.add(new Bowler(bowler.getName(), bowler.getNoOfBallsLeft() - 1));
 		 }
 		 return order;
 	 }

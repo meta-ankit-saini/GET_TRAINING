@@ -73,7 +73,8 @@ public class DirectoryManager {
 	
 	public void printCurrentDirectory(){
 		for (Directory directory : currentDirectory.getSubDirectories()){
-			System.out.print(directory.getPath() + "     ");
+			System.out.print(directory.getName() + "     ");
 		}
+		System.out.println();
 	}
 }
