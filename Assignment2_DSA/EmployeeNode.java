@@ -1,5 +1,10 @@
 package Asssignment5_DSA;
 
+/**
+ * Class representing Structure of node of Employee
+ * @author ankit.saini_metacube
+ *
+ */
 public class EmployeeNode {
 	int age;
 	Double salary;

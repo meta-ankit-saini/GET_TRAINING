@@ -1,6 +1,6 @@
 package Asssignment5_DSA;
 /**
- * 
+ * Class Representing Structure Of Tree Node
  * @author ankit.saini_metacube
  *
  */

@@ -48,7 +48,9 @@ public class SortEmployeeLinkedList {
 		}
 	}
 	
-	
+	/**
+	 * helper method of sort 
+	 */
 	public void sortEmployeeLinkedList(){
 	    if (head == null || head.next == null) return ;
 		EmployeeNode currNode = head ,sortedHead = null ;
@@ -60,6 +62,12 @@ public class SortEmployeeLinkedList {
 		head =  sortedHead;
 	}
 	
+	/**
+	 * method to perform insertion sort on LinkedList
+	 * @param sortedHead
+	 * @param currNode
+	 * @return
+	 */
 	public EmployeeNode sort(EmployeeNode sortedHead, EmployeeNode currNode){
 		
 		if(sortedHead == null || ( (sortedHead.salary < currNode.salary) || (sortedHead.salary.equals(currNode.salary) && (sortedHead.age > currNode.age) ) )){

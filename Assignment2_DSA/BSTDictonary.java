@@ -7,11 +7,22 @@ public class BSTDictonary {
 		return root;
 	}
 	
+	/**
+	 * helper method which sets the root to the root return by inserRec function which inserts the node in BST 
+	 * @param key
+	 * @param data
+	 */
 	void insert(int key ,int data) { 
          root = insertRec(root, key , data); 
     }
  
-
+	/**
+	 * method to insert node in BST recursively
+	 * @param root
+	 * @param key
+	 * @param data
+	 * @return
+	 */
     TreeNode insertRec(TreeNode root, int key ,int data){
         if (root == null) 
         {
@@ -26,26 +37,44 @@ public class BSTDictonary {
         return root;
     }
     
-
-       
+    /**
+     * helper method to delete a node 
+     * @param key
+     */
     public void deleteKey(int key) { 
     	root = deleteNode(root, key); 
     }
     
-    
+    /**
+     * method to find in-order successor
+     * @param root
+     * @return
+     */
     public TreeNode Successor(TreeNode root){
         root=root.right;
         while(root.left!=null)
             root=root.left;
         return root;
     }
+    
+    /**
+     * method to find in-order Predecessor
+     * @param root
+     * @return
+     */
     public TreeNode Predecessor(TreeNode root){
         root=root.left;
         while(root.right!=null)
             root=root.right;
         return root;
     }
-   
+    
+    /**
+     * method to delete a node recursively
+     * @param root
+     * @param key
+     * @return
+     */
     public TreeNode deleteNode(TreeNode root, int key) {
         if(root==null)
             return root;
@@ -72,7 +101,12 @@ public class BSTDictonary {
         return root;
     }
 	
-    
+    /**
+     * method to find value at a given key
+     * @param current
+     * @param key
+     * @return
+     */
 	public int find(TreeNode current, int key) {
 	    if (current == null) {
 	        return -1;
@@ -85,7 +119,10 @@ public class BSTDictonary {
 	      : find(current.right, key);
 	}
 	  
-	
+	/**
+	 * method to perform in-order traversal of BST
+	 * @param node
+	 */
 	public void inorderTraversal(TreeNode node) {  
 		   
         if(root == null){  
@@ -102,6 +139,12 @@ public class BSTDictonary {
         }  
     }  
 	
+	/**
+	 * method to print values in a given key range
+	 * @param node
+	 * @param key1
+	 * @param key2
+	 */
 	void PrintInRange(TreeNode node, int key1, int key2) {
         
         if (node == null) {
