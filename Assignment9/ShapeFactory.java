@@ -1,5 +1,7 @@
 package Assignment9;
 
+import Assignment9.Shape.ShapeType;
+
 /**
  * Class for creating Object of different shape
  * @author ankit.saini_metacube
@@ -18,12 +20,14 @@ public class ShapeFactory {
 		}
 		Shape shape = null;
 		
-		if(shapeType.equals("Square"))
-			shape = new Square(origin,shapeParameters[0]);
-		else if(shapeType.equals("Circle"))
-			shape = new Circle(origin,shapeParameters[0]);
-		else
-			throw new AssertionError("ShapeType Not Supported");
+		
+		switch (ShapeType.valueOf(shapeType)) { 
+        case Circle : shape = new Square(origin,shapeParameters[0]);
+            		  break; 
+        case Square : shape = new Square(origin,shapeParameters[0]);
+           			  break;  
+        default     : throw new AssertionError("ShapeType Not Supported");
+        } 
 		return shape;
 	}
 }

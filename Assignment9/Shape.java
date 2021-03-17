@@ -54,4 +54,10 @@ public interface Shape {
 	 * @return -> if shape can be added into screen
 	 */
 	public boolean canBeAdeedInRegion(Point screenMax);
+	
+	/**
+	 * 
+	 * @return Distance of origin from screen origin
+	 */
+	public Double distanceFromOrigin();
 }

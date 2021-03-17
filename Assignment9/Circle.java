@@ -45,8 +45,8 @@ public class Circle implements Shape {
 	public boolean isPointEnclosed(Point point) {
 		
 		boolean isPointEnclosed = false;
-		Double xScreenOrigin = 0.0;
-		Double yScreenOrigin = 0.0;
+		Double xScreenOrigin = Screen.getOrigin().getX();
+		Double yScreenOrigin = Screen.getOrigin().getY();
 		Double xCentre = origin.getX() + radius * Math.sqrt(1 + Math.pow(((origin.getY() - yScreenOrigin) / (origin.getX() - xScreenOrigin)), 2));
 		Double yCentre = origin.getY() + radius * Math.sqrt(1 + Math.pow(((origin.getY() - yScreenOrigin) / (origin.getX() - xScreenOrigin)), 2));
 		Double distanceFromCentre = Math.sqrt(Math.pow(origin.getX() - xCentre, 2)
@@ -70,8 +70,8 @@ public class Circle implements Shape {
 	
 	@Override
 	public boolean canBeAdeedInRegion(Point screenMax){
-		Double xScreenOrigin = 0.0;
-		Double yScreenOrigin = 0.0;
+		Double xScreenOrigin = Screen.getOrigin().getX();
+		Double yScreenOrigin = Screen.getOrigin().getY();
 		Double XMAX = screenMax.getX();
 		Double YMAX = screenMax.getY();
 		Double xCentre = origin.getX() + radius * Math.sqrt(1 + Math.pow(((origin.getY() - yScreenOrigin) / (origin.getX() - xScreenOrigin)), 2));
@@ -79,5 +79,12 @@ public class Circle implements Shape {
 		if ( xScreenOrigin <= xCentre - radius && yScreenOrigin <= xCentre - radius && XMAX >= xCentre + radius && YMAX >= yCentre + radius )
 			return true;
 		return false;
+	}
+	
+	@Override
+	public Double distanceFromOrigin(){
+		Point screenOrigin = Screen.getOrigin();
+		return Math.sqrt(Math.pow(origin.getX() - screenOrigin.getX(), 2)
+				+ Math.pow(origin.getY()- screenOrigin.getY(), 2));
 	}
 }

@@ -1,13 +1,16 @@
 package Assignment9;
 
 import java.util.ArrayList;
+import java.util.Collections;
 //import java.util.Collections;
 //import java.util.Comparator;
 //import java.lang.reflect.InvocationTargetException;
 //import java.lang.reflect.Method;
+import java.util.Comparator;
+import java.util.List;
 
 public class Screen {
-	private Point origin; 
+	private static Point origin; 
 	private Point  maxPoint;
 	private ArrayList<Shape> listOfShapes = new ArrayList<Shape>();
 	
@@ -37,6 +40,10 @@ public class Screen {
 		}
 		else
 			return false;
+	}
+	
+	public static Point getOrigin(){
+		return origin;
 	}
 	
 	/**
@@ -106,17 +113,14 @@ public class Screen {
 	 * Method to get Shapes sorted by area
 	 */
 	public void getShapesSortedByArea(){
-		Shape[] shapeArray = this.listOfShapes.toArray(new Shape[this.listOfShapes.size()]);
-		for(int firstIndex = 0; firstIndex < shapeArray.length - 1; firstIndex++ ){
-			for(int secondIndex = 0 ; secondIndex < shapeArray.length-firstIndex-1; secondIndex++){
-				if(shapeArray[secondIndex].getArea() > shapeArray[secondIndex+1].getArea() ){
-					Shape tempShape = shapeArray[secondIndex];
-					shapeArray[secondIndex] = shapeArray[secondIndex+1];
-					shapeArray[secondIndex+1] = tempShape;
-				}
+		class ShapeAreaComparator implements Comparator<Shape>{
+			@Override
+			public int compare(Shape shape1, Shape shape2){
+				return (int)(shape1.getArea() - shape2.getArea());
 			}
 		}
-		for(Shape shape : shapeArray){
+		Collections.sort(listOfShapes , new ShapeAreaComparator() );
+		for(Shape shape : listOfShapes){
 			System.out.println("Shape : "+ shape.getShapeType() + "   Area   : " + shape.getArea());
 		}
 	}
@@ -125,17 +129,14 @@ public class Screen {
 	 * Method to get Shapes sorted by Perimeter
 	 */
 	public void getShapesSortedByPerimeter(){
-		Shape[] shapeArray = this.listOfShapes.toArray(new Shape[this.listOfShapes.size()]);
-		for(int firstIndex = 0; firstIndex < shapeArray.length - 1; firstIndex++ ){
-			for(int secondIndex = 0 ; secondIndex < shapeArray.length-firstIndex-1; secondIndex++){
-				if(shapeArray[secondIndex].getPerimeter() > shapeArray[secondIndex+1].getPerimeter() ){
-					Shape tempShape = shapeArray[secondIndex];
-					shapeArray[secondIndex] = shapeArray[secondIndex+1];
-					shapeArray[secondIndex+1] = tempShape;
-				}
+		class ShapePerimeterComparator implements Comparator<Shape>{
+			@Override
+			public int compare(Shape shape1, Shape shape2){
+				return (int)(shape1.getPerimeter() - shape2.getPerimeter());
 			}
 		}
-		for(Shape shape : shapeArray){
+		Collections.sort(listOfShapes , new ShapePerimeterComparator() );
+		for(Shape shape : listOfShapes){
 			System.out.println("Shape : "+ shape.getShapeType() + "   Perimeter   : " + shape.getPerimeter());
 		}
 	}
@@ -144,24 +145,15 @@ public class Screen {
 	 * Method to get Shapes sorted by origin distance
 	 */
 	public void getShapesSortedByOriginDistance(){
-		Shape[] shapeArray = this.listOfShapes.toArray(new Shape[this.listOfShapes.size()]);
-		for(int firstIndex = 0; firstIndex < shapeArray.length - 1; firstIndex++ ){
-			for(int secondIndex = 0 ; secondIndex < shapeArray.length-firstIndex-1; secondIndex++){
-				double distanceOfShape1 = Math.sqrt(Math.pow(shapeArray[secondIndex].getOrigin().getX() - origin.getX(), 2)
-						+ Math.pow(shapeArray[secondIndex].getOrigin().getY()- origin.getY(), 2));
-				double distanceOfShape2 = Math.sqrt(Math.pow(shapeArray[secondIndex+1].getOrigin().getX() - origin.getX(), 2)
-						+ Math.pow(shapeArray[secondIndex+1].getOrigin().getY()- origin.getY(), 2));
-				if( distanceOfShape1  > distanceOfShape2){
-					Shape tempShape = shapeArray[secondIndex];
-					shapeArray[secondIndex] = shapeArray[secondIndex+1];
-					shapeArray[secondIndex+1] = tempShape;
-				}
+		class ShapeOriginDistanceComparator implements Comparator<Shape>{
+			@Override
+			public int compare(Shape shape1, Shape shape2){
+				return (int)(shape1.distanceFromOrigin() - shape2.distanceFromOrigin());
 			}
 		}
-		for(Shape shape : shapeArray){
-			double distanceFormOrigin = Math.sqrt(Math.pow(shape.getOrigin().getX() - origin.getX(), 2)
-					+ Math.pow(shape.getOrigin().getY()- origin.getY(), 2));
-			System.out.println("Shape : "+ shape.getShapeType() + "   Origin Distance   : " + distanceFormOrigin);
+		Collections.sort(listOfShapes , new ShapeOriginDistanceComparator() );
+		for(Shape shape : listOfShapes){
+			System.out.println("Shape : "+ shape.getShapeType() + "   Origin Distance   : " + shape.distanceFromOrigin());
 		}
 	}
 	
@@ -169,18 +161,14 @@ public class Screen {
 	 * Method to get Shapes sorted by timestamp
 	 */
 	public void getShapesSortedByTimeStamp(){
-		
-		Shape[] shapeArray = this.listOfShapes.toArray(new Shape[this.listOfShapes.size()]);
-		for(int firstIndex = 0; firstIndex < shapeArray.length - 1; firstIndex++ ){
-			for(int secondIndex = 0 ; secondIndex < shapeArray.length-firstIndex-1; secondIndex++){
-				if(shapeArray[secondIndex].getTimeStamp().compareTo(shapeArray[secondIndex+1].getTimeStamp()) > 0 ){
-					Shape tempShape = shapeArray[secondIndex];
-					shapeArray[secondIndex] = shapeArray[secondIndex+1];
-					shapeArray[secondIndex+1] = tempShape;
-				}
+		class ShapeTimeComparator implements Comparator<Shape>{
+			@Override
+			public int compare(Shape shape1, Shape shape2){
+				return shape1.getTimeStamp().compareTo(shape2.getTimeStamp());
 			}
 		}
-		for(Shape shape : shapeArray){
+		Collections.sort(listOfShapes , new ShapeTimeComparator() );
+		for(Shape shape : listOfShapes){
 			System.out.println("Shape : "+ shape.getShapeType() + "   TimeStamp   : " + shape.getTimeStamp());
 		}
 	}

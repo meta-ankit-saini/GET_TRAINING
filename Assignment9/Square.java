@@ -63,12 +63,19 @@ public class Square implements Shape {
 	
 	@Override
 	public boolean canBeAdeedInRegion(Point maxScreen){
-		Double xScreenOrigin = 0.0;
-		Double yScreenOrigin = 0.0;
+		Double xScreenOrigin = Screen.getOrigin().getX();
+		Double yScreenOrigin = Screen.getOrigin().getY();
 		Double XMAX = maxScreen.getX();
 		Double YMAX = maxScreen.getY();
 		if ( xScreenOrigin <= origin.getX() && yScreenOrigin <= origin.getY() && XMAX >= origin.getX() + side   && YMAX >= origin.getY() + side )
 			return true;
 		return false;
+	}
+	
+	@Override
+	public Double distanceFromOrigin(){
+		Point screenOrigin = Screen.getOrigin();
+		return Math.sqrt(Math.pow(origin.getX() - screenOrigin.getX(), 2)
+				+ Math.pow(origin.getY()- screenOrigin.getY(), 2));
 	}
 }
