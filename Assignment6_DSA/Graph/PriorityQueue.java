@@ -19,6 +19,10 @@ public class PriorityQueue{
 		size = 0;
 	}
 	
+	/**
+	 * 
+	 * @return -> element with highest priority
+	 */
 	public PriorityNode peek(){
 		return priorityQueue[rear];
 	}
@@ -101,6 +105,10 @@ public class PriorityQueue{
 		size += 1;
 	}
 	
+	/**
+	 * Dequeue method  for Priority Queue
+	 * @return
+	 */
 	public PriorityNode deQueue(){
 		if (isEmpty()){
 			throw new AssertionError("Queue is Empty");
@@ -121,6 +129,9 @@ public class PriorityQueue{
 		return temp;
 	}
 	
+	/**
+	 * method to print Priority Queue
+	 */
 	public void printQueue(){
 		if(front == -1)
 		{
