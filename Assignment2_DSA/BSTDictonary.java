@@ -1,4 +1,13 @@
 package Asssignment5_DSA;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class BSTDictonary {
 	private TreeNode root;
@@ -164,23 +173,33 @@ public class BSTDictonary {
         }
     }
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException{
 		BSTDictonary dict = new BSTDictonary();
 		
-		dict.insert(50, 101);
-		dict.insert(10, 102);
-		dict.insert(20, 103);
-		dict.insert(8, 104);
-		dict.insert(40, 105);
-		dict.insert(45, 106);
-		dict.insert(60, 107);
-		dict.insert(55, 108);
-		dict.insert(65, 109);
-		dict.insert(58, 110);
-		dict.insert(70, 111);
-		dict.insert(68, 112);
+		//inserting data using json file
+		JSONParser parser = new JSONParser();
 		
+		try {
+			JSONObject jsonObject =  (JSONObject)parser.parse(new FileReader(".\\data\\data.json"));
+			JSONArray nodes = (JSONArray) jsonObject.get("nodes");
+			for(int i = 0 ; i < nodes.size(); i++) {
+				JSONArray node = (JSONArray) nodes.get(i);
+				Iterator<Long> iterator = node.iterator();
+				int key = iterator.next().intValue();
+				int value = iterator.next().intValue();
+				dict.insert(key , value ); 
+		    }
+		}
 		
+		catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+		catch (IOException e) {
+            e.printStackTrace();
+        } 
+		catch (ParseException e) {
+            e.printStackTrace();
+        }
 		System.out.println("find  : " + dict.find(dict.getRoot(), 45));
 		
 		System.out.print("Inorder : ");
