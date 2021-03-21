@@ -1,10 +1,8 @@
 drop database storefront;
 create database storefront;
-show databases;
 
 
 use storefront;
-show tables;
 
 
 create table shoppertable(
