@@ -1,8 +1,18 @@
 package Assignment2_DSA;
 import java.util.Stack;
 
+/**
+ * Class to compute value of Infix expression
+ * @author ankit.saini_metacube
+ *
+ */
 public class InfixExpression {
 	
+	/**
+	 * method returns precedence of operator
+	 * @param op
+	 * @return -> precedence
+	 */
 	public int precedence(String op) {
 		 switch (op) {
 		 	case "||": return 1;
@@ -24,6 +34,11 @@ public class InfixExpression {
 	      }
 	 }
 	
+	 /**
+	  * method to check if token is operator
+	  * @param op
+	  * @return -> true if operator else false
+	  */
 	 public boolean isOperator(String op) {
 		 switch (op) {
 		 	case "||" : 
@@ -42,9 +57,16 @@ public class InfixExpression {
 	        case "^"  :  
 	        case "!"  : return true;
 	        default: return false; 
-	      }
+	     }
 	}
 	 
+	/**
+	 * method to perform operation
+	 * @param num1
+	 * @param num2
+	 * @param op
+	 * @return -> result after performing operation
+	 */
 	public Double performOperation(Double num1 , Double num2, String op){
 		switch (op) {
 		case "||" : if ( (num1 != 0 || num1 != 1) || ( num1 !=2 || num2 != 0) )
@@ -107,6 +129,11 @@ public class InfixExpression {
 		}
 	}
 		
+	/**
+	 * method to convert infix expression into postfix expression
+	 * @param infix
+	 * @return -> postfix expression
+	 */
 	public String infixTOPostfix(String infix){
 		Stack<String> stack = new Stack<String>(); 
 		if(infix.length() == 0)
@@ -148,6 +175,11 @@ public class InfixExpression {
 	     return postfix.trim();
 	}
 	
+	/**
+	 * method to check if token is Number
+	 * @param token
+	 * @return -> true if token is Number else false
+	 */
 	public boolean isNumber(String token){
 		char[] tokenArray = token.toCharArray();
 		for (int index = 0 ; index < token.length(); index++){
@@ -159,12 +191,16 @@ public class InfixExpression {
 		return true;
 	}
 	
-	
+	/**
+	 * method to evaluate posfix expression
+	 * @param postfix
+	 * @return -> result of evaluation
+	 */
 	public Double evaluatePostfix(String postfix) {
 		Stack<Double> operands = new Stack<Double>();
 		String[] tokens = postfix.split(" ");
 		for (String token : tokens) {
-			if(isNumber(token)) { // instanceof Integer
+			if(isNumber(token)) { 
 				operands.push(Double.parseDouble(token));
 			}
 			else{
@@ -177,7 +213,12 @@ public class InfixExpression {
 		return operands.pop();
 	}
 	
-   public Double calculate(String infix) { 
+	/**
+	 * method to evaluate infix expression
+	 * @param infix
+	 * @return -> result of evaluation
+	 */
+    public Double calculate(String infix) { 
        Stack<Double> nums = new Stack <Double>();
        Stack<String> operator = new Stack<String>(); 
        String[] tokens = infix.trim().split(" ");
@@ -211,9 +252,13 @@ public class InfixExpression {
            nums.push(performOperation(num1,num2,operator.pop()));
        }
        return nums.pop();
-   }
+    }
    
-	
+	/**
+	 * method to evaluate infix expression by converting it into postfix expression
+	 * @param infix
+	 * @return -> result of evaluation
+	 */
 	public Double evaluateInfixExpression(String infix){
 		String postfix = infixTOPostfix(infix);
 		return evaluatePostfix(postfix);

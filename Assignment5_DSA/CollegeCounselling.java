@@ -21,8 +21,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class CollegeCounselling {
 	
-	
-	public XSSFSheet readExcelFile(String path   ) {
+	/**
+	 * method to read Excel file in XSSFSheet format
+	 * @param path -> path of excel file
+	 * @return -> XSSFsheet 
+	 */
+	public XSSFSheet readExcelFile(String path ) {
 		FileInputStream fileInputStream;
 		try {
 				fileInputStream = new FileInputStream(path);
@@ -41,6 +45,11 @@ public class CollegeCounselling {
 		return sheet;
 	}
 	
+	/**
+	 * method to get Program Map containing program and capacity
+	 * @param programPath
+	 * @return -> LinkedHashMap<program, capacity> 
+	 */
 	public LinkedHashMap<String, Integer> getProgramMap(String programPath){
 		LinkedHashMap<String, Integer> programMap = new LinkedHashMap<String, Integer>();
 		XSSFSheet  programSheet = readExcelFile(programPath);
@@ -65,6 +74,11 @@ public class CollegeCounselling {
 		return programMap;
 	}
 	
+	/**
+	 * method to get student map containing student and choices
+	 * @param studentPath
+	 * @return -> LinkedHashMap<Student, ArrayList<choice>>
+	 */
 	public LinkedHashMap<String, ArrayList<String>> getStudentMap(String studentPath){
 		LinkedHashMap<String, ArrayList<String>> studentMap = new LinkedHashMap<String, ArrayList<String>>();
 		XSSFSheet  studentSheet = readExcelFile(studentPath);
@@ -90,6 +104,11 @@ public class CollegeCounselling {
 		return studentMap;
 	}
 	
+	/**
+	 * method to add students in Queue 
+	 * @param studentPath
+	 * @return
+	 */
 	public Queue<Student> addStudentsInQueue(String studentPath){
 		LinkedHashMap<String, ArrayList<String>> studentMap = getStudentMap(studentPath);
 		Queue<Student> studentQueue = new Queue<Student>(studentMap.size());
@@ -99,6 +118,13 @@ public class CollegeCounselling {
 		return studentQueue;
 	}
 	
+	/**
+	 * method to compute allocations for student
+	 * @param programPath
+	 * @param studentPath
+	 * @param allocationPath
+	 * @return
+	 */
 	public LinkedHashMap<String, ArrayList<String>> getAllocationMap(String programPath , String studentPath, String allocationPath ){
 		Queue<Student> studentQueue = addStudentsInQueue(studentPath);
 		LinkedHashMap<String, Integer> programMap = getProgramMap(programPath);
@@ -123,6 +149,12 @@ public class CollegeCounselling {
 		return allocationMap;
 	}
 	
+	/**
+	 * method to write allocation in allocations file
+	 * @param programPath
+	 * @param studentPath
+	 * @param allocationPath
+	 */
 	public void writeAllocationToExcelFile(String programPath , String studentPath, String allocationPath){
 		LinkedHashMap<String, ArrayList<String>>  allocationMap = getAllocationMap(programPath, studentPath, allocationPath);
 		XSSFWorkbook allocationWorkbook = new XSSFWorkbook();
@@ -148,7 +180,6 @@ public class CollegeCounselling {
 			}
 			rowNumber += 1;
 		}
-//		System.out.print(allocationMap);
 		for(Row row : allocationSheet){
 			for(Cell  cell : row){
 				System.out.println(cell.getStringCellValue());

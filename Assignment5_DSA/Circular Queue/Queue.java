@@ -1,9 +1,18 @@
 package Assignment2_DSA;
 
+/**
+ * Class implementing Queue
+ * @author ankit.saini_metacube
+ *
+ * @param <T>
+ */
 public class Queue<T> {
 	Object [] queue ; 
 	private int front , rear , size , capacity;
 	
+	/**
+	 * constructor to initialize queue with default size 
+	 */
 	public Queue(){
 		capacity = 100;
 		queue = new Object[capacity];
@@ -12,6 +21,10 @@ public class Queue<T> {
 		size = 0;
 	}
 	
+	/**
+	 * constructor to initialize queue of given capacity
+	 * @param capacity -> max size of queue
+	 */
 	public Queue(int capacity){
 		this.capacity = capacity;
 		queue = new Object[capacity];
@@ -20,18 +33,34 @@ public class Queue<T> {
 		size = 0;
 	}
 	
+	/**
+	 * 
+	 * @return -> true if queue is empty else false
+	 */
 	public boolean isEmpty(){
 		return size == 0;
 	}
 	
+	/**
+	 * 
+	 * @return -> true if queue is full else false
+	 */
 	public boolean isFull(){
 		return size == capacity;
 	}
 	
+	/**
+	 * 
+	 * @return -> no of elements in queue
+	 */
 	public int noOfElements(){
 		return size;
 	}
 	
+	/**
+	 * method to insert 
+	 * @param data
+	 */
 	public void enQueue(T data){
 		if (isFull()){
 			throw new AssertionError("No Space Available");
@@ -74,6 +103,7 @@ public class Queue<T> {
 		size -= 1;
 		return temp;
 	}
+	
 	
 	public void printQueue(){
 		if(front == -1)
