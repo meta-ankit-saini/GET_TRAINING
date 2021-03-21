@@ -1,5 +1,10 @@
 package Asssignment3_DSA;
 
+/**
+ * Class Stores information about the bowler
+ * @author ankit.saini_metacube
+ *
+ */
 public class Bowler {
 	private String name;
 	private int noOfBalls;

@@ -1,8 +1,17 @@
 package Asssignment3_DSA;
+
+/**
+ * class for implementation of priority queue data structure
+ * @author ankit.saini_metacube
+ *
+ */
 public class PriorityQueue{
 	PriorityNode[] priorityQueue; 
 	private int front , rear , size , capacity;
 	
+	/**
+	 * constructor to initialize queue with default capacity
+	 */
 	public PriorityQueue(){
 		capacity = 100;
 		priorityQueue = new PriorityNode[capacity];
@@ -11,6 +20,9 @@ public class PriorityQueue{
 		size = 0;
 	}
 	
+	/**
+	 * constructor to initialize queue with given capacity 
+	 */
 	public PriorityQueue(int capacity){
 		this.capacity = capacity;
 		priorityQueue = new PriorityNode[capacity];
@@ -19,18 +31,34 @@ public class PriorityQueue{
 		size = 0;
 	}
 	
+	/**
+	 * method to compute if queue is empty
+	 * @return -> true if queue is empty else false
+	 */
 	public boolean isEmpty(){
 		return size == 0;
 	}
 	
+	/**
+	 * method to compute if queue is full
+	 * @return -> true if queue is full else false
+	 */
 	public boolean isFull(){
 		return size == capacity;
 	}
 	
+	/**
+	 * method to compute no of elements in queue 
+	 * @return -> no of elements in queue 
+	 */
 	public int noOfElements(){
 		return size;
 	}
 	
+	/**
+	 * method to insert new node in priority queue
+	 * @param data
+	 */
 	public void enQueue(PriorityNode data){
 		if (isFull()){
 			throw new AssertionError("No Space Available");
@@ -97,6 +125,10 @@ public class PriorityQueue{
 		size += 1;
 	}
 	
+	/**
+	 * method to remove first element of priority queue
+	 * @return -> first element
+	 */
 	public PriorityNode deQueue(){
 		if (isEmpty()){
 			throw new AssertionError("Queue is Empty");
@@ -117,6 +149,9 @@ public class PriorityQueue{
 		return temp;
 	}
 	
+	/**
+	 * method to print priority queue
+	 */
 	public void printQueue(){
 		if(front == -1)
 		{
