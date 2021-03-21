@@ -47,7 +47,7 @@ public class OrganicCompoundMass {
 	        		  }
 	        		  index -= 1;
 	        		  tempResult1 *= (Integer.parseInt(number1));
-	        	  }
+	        	}
 	            
 	            result += tempResult1;
 	        }
