@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Metacube Parking System</title>
+</head>
+<body>
+
+	<div class="navbar">
+		<nav>
+  			<a class= "addEmployee" href="#addEmployeeForm"><strong>Add Employee</strong> </a>
+  			<a class= "addVehicle" href="#addVehicleForm"><strong>Add Vehicle</strong></a>
+  			<a class= "giveFeedBack" href="#giveFeedbackForm"><strong>Give Feedback</strong></a>
+  			<a class= "pricing" href="#pricing"><strong>Pricing</strong></a>
+  		</nav>
+	</div>
+
+	<div>
+		<img src="parking.jpg" alt="Flowers in Chania" , width="100%"> 
+	</div>
+
+	<div class = "addEmployeeForm" id="addEmployeeForm">
+		<h2>Add Employee : </h2>
+		<form>
+			<label for="fullName"> Full Name : </label>
+  			<input type="text" id="fullName" name="fname"><br />
+  			<label for="gender"> Gender : </label>
+  			<input type="radio" id="male" name="gender"> 
+  			<label for="male"> Male </label>
+  			<input type="radio" id="female" name="gender"> 
+  			<label for="female"> Female </label>
+  			<input type="radio" id="other" name="gender"> 
+  			<label for="other"> Other </label><br />
+  			<label for="employeeEmail"> Email : </label>
+  			<input type="email" id="employeeEmail" name="employeeEmail"><br />
+  			<label for="password"> Password : </label>
+  			<input type="password" id="password" name="password"><br />
+  			<label for="confirmPassword"> Confirm Password : </label>
+  			<input type="password" id="confirmPassword" name="confirmPassword"><br />
+  			<label for="phone"> Contact Number : </label>
+  			<input type="tel" id="phone" name="phone" pattern="[789][0-9]{9}"><br />
+  			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<div class = "addVehicleForm" id ="addVehicleForm">
+	<h2>Add Vehicle : </h2>
+		<form>
+			<label for="vehicleCompany"> Vehicle Company : </label>
+  			<input type="text" id="vehicleCompany" name="vehicleCompany"><br />
+  			<label for="vehicleModel"> Vehicle Model : </label>
+  			<input type="text" id="vehicleModel" name="vehicleModel"><br />
+  			<label for="vehicleType"> Vehicle Type : </label>
+  			<input type="radio" id="twoWheeler" name="vehicleType"> Two Wheeler 
+  			<input type="radio" id="fourWheeler" name="vehicleType"> Four Wheeler <br />
+  			<label for="vehicleNumber"> Vehicle Number : </label>
+  			<input type="text" id="vehicleNumber" name="vehicleNumber" pattern="[A-Z]{2}[1-9]{2}[A-Z][0-9]{4}"><br />
+  			<label for="employeeId"> Employee ID : </label>
+  			<input type="text" id="employeeId" name="employeeId" pattern="[0-9]{5}"><br />
+  			<label for="identification">Overview Of Vehicle:</label><br />
+			<textarea id="identification" name="identification" rows="4" cols="50"></textarea><br/>
+  			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<div class = "giveFeedbackForm" id = "giveFeedbackForm">
+	<h2> Give Feedback : </h2>
+		<form>
+  			<label for="date"> Date : </label>
+  			<input type="date" id="date" name="date"><br />
+  			<label for="feedbackEmail"> Email : </label>
+  			<input type="email" id="feedbackEmail" name="feedbackEmail"><br />
+  			<label for="subjectOfFeedback"> Subject : </label>
+  			<input type="text" id="subjectOfFeedback" name="subjectOfFeedback"><br />
+			<label for="feedbackMessage">Feedback Message :</label><br />
+			<textarea id="feedbackMessage" name="feedbackMessage" rows="4" cols="50"></textarea><br/>
+  			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<form>
+		
+		<div class = "pricing" id = "pricing">
+			<h2> Pricing : </h2>
+		
+			<div class = "cyclePricing" id ="cyclePricing">
+				<h3> Cycle : </h3>
+				<input type="radio" id="cyclePricingPerDay" name="cyclePricingPerDay"> 
+	  			<label for="cyclePricingPerDay"> $5 Per Day </label>
+	  			<input type="radio" id="cyclePricingPerMonth" name="cyclePricingPerMonth"> 
+	  			<label for="cyclePricingPerMonth"> $100 Per Month </label>
+	  			<input type="radio" id="cyclePricingPerYear" name="cyclePricingPerYear"> 
+	  			<label for="cyclePricingPerYear"> $500 Per Year </label><br />
+	  			<button id = "cyclePricingBtn" name="cyclePricing" type="submit" value="Submit">Purchase</button>
+			</div>
+
+			<div class = "mototCyclePricing" id ="mototCyclePricing">
+				<h3> Motor Cycle : </h3>
+				<input type="radio" id="mototCyclePricingPerDay" name="mototCyclePricingPerDay"> 
+	  			<label for="mototCyclePricingPerDay"> $10 Per Day </label>
+	  			<input type="radio" id="mototCyclePricingPerMonth" name="mototCyclePricingPerMonth"> 
+	  			<label for="mototCyclePricingPerMonth"> $200 Per Month </label>
+	  			<input type="radio" id="mototCyclePricingPerYear" name="mototCyclePricingPerYear"> 
+	  			<label for="mototCyclePricingPerYear"> $1000 Per Year </label><br />
+	  			<button id = "motorCyclePricingBtn" name="mototCyclePricing" type="submit" value="Submit">Purchase</button>
+			</div>
+
+			<div class = "fourWheelerPricing" id ="fourWheelerPricing">
+				<h3> Four Wheelers : </h3>
+				<input type="radio" id="fourWheelerPricingPerDay" name="fourWheelerPricingPerDay"> 
+	  			<label for="fourWheelerPricingPerDay"> $20 Per Day </label>
+	  			<input type="radio" id="fourWheelerPricingPerMonth" name="fourWheelerPricingPerMonth"> 
+	  			<label for="fourWheelerPricingPerMonth"> $500 Per Month </label>
+	  			<input type="radio" id="fourWheelerPricingPerYear" name="fourWheelerPricingPerYear"> 
+	  			<label for="fourWheelerPricingPerYear"> $3500 Per Year </label><br />
+	  			<button id = "fourWheelerPricingBtn" name="fourWheelerPricing" type="submit" value="Submit">Purchase</button>
+			</div>
+		</div>
+	</form>	
+</body>
+</html>
