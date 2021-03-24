@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<title>Metacube Parking System</title>
+</head>
+<body>
+
+	<header class="navbar">
+		<!-- This is a header class that defines the navbar -->
+		<nav>
+  			<a class="navItem" id= "addEmployeeLink" href="#addEmployeeForm"><strong>Add Employee</strong> </a>
+  			<a class="navItem" id= "addVehicleLink" href="#addVehicleForm"><strong>Add Vehicle</strong></a>
+  			<a class="navItem" id= "giveFeedBackLink" href="#giveFeedbackForm"><strong>Give Feedback</strong></a>
+  			<a class="navItem" id= "pricingLink" href="#pricing"><strong>Pricing</strong></a>
+  		</nav>
+	</header>
+
+	<div class = "image">
+		<!-- This is the block of parking image -->
+		<img src="parking.jpg" alt="Flowers in Chania" , width="100%"> 
+	</div>
+
+	<div id="addEmployeeForm">
+		<!-- This is the block that creates a form for adding employee -->
+		<h2 class= "heading">Add Employee  </h2>
+		<div class="form">
+			<form class="formRequiresBorder">
+				<div class="labels"><label for="fullName"> Full Name : </label>	</div>
+				  <input class="inputType" type="text" id="fullName" name="fname"><br />
+				<div class="labels"><label for="gender"> Gender : </label></div>
+				<div class="options"><input class="radioType" type="radio" id="male" name="gender">
+				  <label for="male"> Male </label>
+				  <input class="radioType" type="radio" id="female" name="gender"> 
+				  <label for="female"> Female </label>
+				  <input class="radioType" type="radio" id="other" name="gender"> 
+				<label for="other"> Other </label>
+				</div><br /><br />
+				<div class="labels"><label for="employeeEmail"> Email : </label></div> 			
+				  <input class="inputType" type="email" id="employeeEmail" name="employeeEmail"><br />
+				<div class="labels"><label for="password"> Password : </label></div>
+				  <input class="inputType" type="password" id="password" name="password"><br />
+				<div class="labels"><label for="confirmPassword"> Confirm Password : </label></div>
+				  <input class="inputType" type="password" id="confirmPassword" name="confirmPassword"><br />
+				<div class="labels"><label for="phone"> Contact Number : </label></div>
+				  <input class="inputType" type="tel" id="phone" name="phone" pattern="[789][0-9]{9}"><br />
+				  <input class="submitButton" type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+
+	<div  id ="addVehicleForm">
+		<!-- This is the block that creates a form for adding vehicle -->
+		<h2 class= "heading">Add Vehicle </h2>
+		<div class="form">
+			<form class="formRequiresBorder">
+				<div class="labels"><label for="vehicleCompany"> Vehicle Company : </label></div>
+				  <input class="inputType" type="text" id="vehicleCompany" name="vehicleCompany"><br />
+				<div class="labels"><label for="vehicleModel"> Vehicle Model : </label></div>
+				  <input class="inputType" type="text" id="vehicleModel" name="vehicleModel"><br />
+				<div class="labels"><label for="vehicleType"> Vehicle Type : </label></div>
+				<div class="options">  
+					<input type="radio" id="twoWheeler" name="vehicleType"> 
+				 	<label for = "twoWheeler"> Two Wheeler </label> 
+				  	<input type="radio" id="fourWheeler" name="vehicleType"> 
+				  	<label for = "fourWheeler"> Four Wheeler </label> 
+				</div><br /><br />
+				<div class="labels"><label for="vehicleNumber"> Vehicle Number : </label></div>
+				  <input class="inputType" type="text" id="vehicleNumber" name="vehicleNumber" pattern="[A-Z]{2}[1-9]{2}[A-Z][0-9]{4}"><br />
+				<div class="labels"><label for="employeeId"> Employee ID : </label></div>
+				  <input class="inputType" type="text" id="employeeId" name="employeeId" pattern="[E][0-9]{6}"><br />
+				<div class="labels"><label for="identification">Overview Of Vehicle:</label></div>
+				<textarea class="inputTextType" id="identification" name="identification" rows="5" ></textarea><br/><br />
+				  <input class="submitButton" type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+
+	<div  id = "giveFeedbackForm">
+		<!-- This is the block that creates a form for giving feedback -->
+		<h2 class= "heading"> Give Feedback </h2>
+		<div class="form">
+			<form class="formRequiresBorder">
+				<div class="labels"><label for="date"> Date : </label></div>
+				  <input class="inputType" type="date" id="feedbackDate" name="feedbackDate"><br />
+				<div class="labels"><label for="feedbackEmail"> Email : </label></div>
+				  <input class="inputType" type="email" id="feedbackEmail" name="feedbackEmail"><br />
+				<div class="labels"><label for="subjectOfFeedback"> Subject : </label></div>
+				  <input class="inputType" type="text" id="subjectOfFeedback" name="subjectOfFeedback"><br />
+				<div class="labels"><label for="feedbackMessage">Feedback Message :</label></div>
+				<textarea class="inputTextType" id="feedbackMessage" name="feedbackMessage" rows="5" ></textarea><br/><br />
+				  <input class="submitButton" type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+
+	<div class = "pricing" id = "pricing">
+		<!-- This is the block that creates a form for selecting parking System plan -->
+		<h2 class= "heading"> Pricing </h2>
+		<div class="pricingBorder">
+			
+			<div class = "bo" id ="cyclePricing">
+				<h3>Cycle </h3>
+				<form >	
+					<div class = "circle"><p>$100 Per Month </p></div>
+					<input type="radio" id="cyclePricingPerDay" name="cyclePricing"> 
+					<label for="cyclePricingPerDay"> $5 Per Day </label><br />
+					<input type="radio" id="cyclePricingPerMonth" name="cyclePricing"> 
+					<label for="cyclePricingPerMonth"> $100 Per Month </label><br />
+					<input type="radio" id="cyclePricingPerYear" name="cyclePricing"> 
+					<label for="cyclePricingPerYear"> $500 Per Year </label><br />
+					<button class="submitButton" id = "cyclePricingBtn" name="cyclePricing" type="submit" value="Submit">Purchase</button>
+				</form>
+			</div>
+			
+			
+
+			<div class = "bo" id ="mototCyclePricing">
+				<h3>Motor Cycle </h3>
+				<form>
+					<div class = "circle"> <p>$200 Per Month </p></div>
+					<input type="radio" id="mototCyclePricingPerDay" name="mototCyclePricing"> 
+					<label for="mototCyclePricingPerDay"> $10 Per Day </label><br />
+					<input type="radio" id="mototCyclePricingPerMonth" name="mototCyclePricing"> 
+					<label for="mototCyclePricingPerMonth"> $200 Per Month </label><br />
+					<input type="radio" id="mototCyclePricingPerYear" name="mototCyclePricing"> 
+					<label for="mototCyclePricingPerYear"> $1000 Per Year </label><br />
+					<button class="submitButton" id = "motorCyclePricingBtn" name="mototCyclePricing" type="submit" value="Submit">Purchase</button>
+				</form>
+			</div>
+
+			<div class = "bo" id ="fourWheelerPricing">
+				<h3>Four Wheeler </h3>
+				<form>
+					<div class = "circle"> <p>$500 Per Month </p></div>
+					<input type="radio" id="fourWheelerPricingPerDay" name="fourWheelerPricing"> 
+					<label for="fourWheelerPricingPerDay"> $20 Per Day </label><br />
+					<input type="radio" id="fourWheelerPricingPerMonth" name="fourWheelerPricing"> 
+					<label for="fourWheelerPricingPerMonth"> $500 Per Month </label><br />
+					<input type="radio" id="fourWheelerPricingPerYear" name="fourWheelerPricing"> 
+					<label for="fourWheelerPricingPerYear"> $3500 Per Year </label><br />
+					<button class="submitButton" id = "fourWheelerPricingBtn" name="fourWheelerPricing" type="submit" value="Submit">Purchase</button>
+				</form>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>
