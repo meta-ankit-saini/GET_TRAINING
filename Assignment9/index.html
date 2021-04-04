@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>typescript Assignment</title>
+    <link rel="stylesheet" href="style.css">
+ </head>
+  <body>
+    
+    <header class="navbar"> 
+      <nav>
+          <a class="navItem" id= "addEmployeeLink" href="#addEmployee"><strong>Add Employee</strong> </a>
+          <a class="navItem" id= "addVehicleLink" href="#addVehicle"><strong>Add Vehicle</strong></a>
+          <a class="navItem" id= "giveFeedBackLink" href="#giveFeedback"><strong>Give Feedback</strong></a>
+          <a class="navItem" id= "pricingLink" href="#pricingForm"><strong>Pricing</strong></a>
+        </nav>
+    </header>
+
+    <div class = "image">
+      <img src="parking.jpg" alt="Flowers in Chania" , width="100%"> 
+    </div>
+
+    <div id="addEmployee">
+      <h2 class= "heading" >Add Employee</h2>
+      <div class="form content">
+        <form class="formRequiresBorder" id="addEmployeeForm">
+          <div class="ae">
+            <div class="labels"><label for="fullName"> Full Name : </label>	</div>
+            <input class="inputType" type="text" id="fullName" name="fullname" oninput="validateName(this)" onkeypress="nextAE(this ,event)"><br />
+          </div>
+          <div class="ae">
+            <div class="labels"><label for="gender"> Gender : </label></div>
+            <div class="options" id="gender">
+              <input class="radioType" type="radio"  name="gender" value="Male" onclick="nextAE(this)">
+              <label for="male"> Male </label>
+              <input class="radioType" type="radio"  name="gender" value="Female" onclick="nextAE(this)"> 
+              <label for="female"> Female </label>
+              <input class="radioType" type="radio" name="gender" value="Other" onclick="nextAE(this)"> 
+              <label for="other"> Other </label>
+            </div><br /><br />
+          </div>
+          <div class="ae">
+            <div class="labels"><label for="employeeEmail"> Email : </label></div> 			
+            <input class="inputType" type="email" id="employeeEmail" name="employeeEmail" oninput="validateEmail(this)" onkeypress="nextAE(this ,event)"><br />
+          </div>
+          <div class="ae">
+            <div class="labels"><label for="password"> Password : </label></div>
+            <input class="inputType" type="password" id="password" name="password" oninput="validatePassword(this)" onkeypress="nextAE(this ,event)"><br />
+          </div>
+          <div class="ae">
+            <div class="labels"><label for="confirmPassword"> Confirm Password : </label></div>
+            <input class="inputType" type="password" id="confirmPassword" name="confirmPassword" oninput="confirmPass(this)" onkeypress="nextAE(this ,event)"><br />
+          </div>
+          <div class="ae">
+            <div class="labels"><label for="phone"> Contact Number : </label></div>
+            <input class="inputType" type="tel" id="phone" name="phone" oninput="validateContactNo(this)" onkeypress="nextAE(this ,event)"><br />
+          </div>
+          <div class="ae">
+            <input class="submitButton" value="Submit" onclick="addEmployee()">
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <div  id ="addVehicle">
+      <h2 class= "heading " >Add Vehicle </h2>
+      <div class="form content">
+        <form class="formRequiresBorder" id ="addVehicleForm">
+          <div class="av">
+            <div class="labels"><label for="vehicleCompany"> Vehicle Company : </label></div>
+            <input class="inputType" type="text" id="vehicleCompany" name="vehicleCompany" oninput="validateName(this)" onkeypress="nextAV(this,event)"><br />
+          </div>
+          <div class="av">
+            <div class="labels"><label for="vehicleModel"> Vehicle Model : </label></div>
+            <input class="inputType" type="text" id="vehicleModel" name="vehicleModel" oninput="validateVehicleNoOrModel(this)" onkeypress="nextAV(this,event)"><br />
+          </div>
+          <div class="av" >
+            <div class="labels"><label for="vehicleType"> Vehicle Type : </label></div>
+            <div class="options">  
+              <input type="radio" id="twoWheeler" name="vehicleType" value="twoWheeler" onclick="nextAV(this)"> 
+              <label for = "twoWheeler"> Two Wheeler </label> 
+              <input type="radio" id="fourWheeler" name="vehicleType" value="fourWheeler" onclick="nextAV(this)"> 
+              <label for = "fourWheeler"> Four Wheeler </label> 
+            </div><br /><br/>
+          </div>
+          <div class="av">
+            <div class="labels"><label for="vehicleNumber"> Vehicle Number : </label></div>
+            <input class="inputType" type="text" id="vehicleNumber" name="vehicleNumber" oninput="validateVehicleNoOrModel(this)" onkeypress="nextAV(this,event)"><br />
+          </div>
+          <div class="av">
+            <div class="labels"><label for="employeeId"> Employee ID : </label></div>
+            <input class="inputType" type="text" id="employeeId" name="employeeId" oninput="validateEmployeeId(this)" onkeypress="nextAV(this,event)"><br />
+          </div>
+          <div class="av">
+            <div class="labels"><label for="identification">Overview Of Vehicle:</label></div>
+          <textarea class="inputTextType" id="identification" name="identification" rows="5" oninput="validateTextArea(this)" onkeypress="nextAV(this,event)"></textarea><br/><br />
+          </div>
+          <div class="av">  
+            <input class="submitButton" value="Submit" onclick="addVehicle()">
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <div  id = "giveFeedback" >
+      <h2 class= "heading " > Give Feedback </h2>
+      <div class="form content">
+        <form class="formRequiresBorder" id = "giveFeedbackForm">
+        <div id="gf1" class="gf" >
+          <div class="labels"><label for="date"> Date : </label></div>
+          <input class="inputType" type="date" id="feedbackDate" name="feedbackDate" onkeypress="nextGF(this,event)"><br />
+        </div>  
+        <div id = "gf2" class="gf">  
+          <div class="labels"><label for="feedbackEmail"> Email : </label></div>
+          <input class="inputType" type="email" id="feedbackEmail" name="feedbackEmail" oninput="validateEmail(this)" onkeypress="nextGF(this,event)"><br />
+        </div>
+        <dic id ="gf3" class="gf">
+          <div class="labels"><label for="subjectOfFeedback"> Subject : </label></div>
+          <input class="inputType" type="text" id="subjectOfFeedback" name="subjectOfFeedback" oninput="validateTextArea(this)" onkeypress="nextGF(this,event)"><br />
+        </dic>
+        <div id = "gf4" class="gf">
+          <div class="labels"><label for="feedbackMessage">Feedback Message :</label></div>
+          <textarea class="inputTextType" id="feedbackMessage" name="feedbackMessage" rows="5" oninput="validateTextArea(this)" onkeypress="nextGF(this,event)"></textarea><br/><br />
+        </div>
+        <div id = "gf5" class="gf">
+          <input class="submitButton" value="Submit" onclick="addFeedback()">
+        </div>
+        </form>
+      </div>
+    </div>
+  
+    <div class = "pricingForm " id = "pricingForm">
+      <h2 class= "heading"> Pricing </h2>
+      <div class="pricingBorder content" >
+        <div class="pf">
+          <div class="labels"><label for="vehicleTypeCheckBox"> Vehicle:</div>
+          <div class="options" id ="vehicleTypeCheckBox">  
+            <input class="radioType" type="radio" name="cycle"  value="cycle" onclick="showPrice(this)"> 
+            <label for = "cycle"> Cycle </label> 
+            <input class="radioType" type="radio" name="motorCycle" value="motorCycle" onclick="showPrice(this)"> 
+            <label for = "mototrCycle"> Motor Cycle </label> 
+            <input class="radioType" type="radio" name="fourWheeler" value="fourWheeler" onclick="showPrice(this)"> 
+            <label for = "fourWheeler"> Four Wheeler </label> 
+          </div><br /><br/>
+        </div>
+
+        <div class="pf">
+          <div class = "bo">
+            <h3>Cycle </h3>
+            <form id ="cyclePricing">
+              <div class = "circle" id = "circle1"><p id = "p1">$100 Per Month </p></div>
+              <input type="radio" value="cyclePricingPerDay" name="pricing">
+              <label for="cyclePricingPerDay"> <span id = "p11">$5 Per Day </span></label><br />
+              <input type="radio" value="cyclePricingPerMonth" name="pricing">
+              <label for="cyclePricingPerMonth"> <span id = "p12">$100 Per Month </span></label><br />
+              <input type="radio" value="cyclePricingPerYear" name="pricing"> 
+              <label for="cyclePricingPerYear"> <span id = "p13">$500 Per Year </span></label><br />
+              <button class="submitButton" id = "cyclePricingBtn" name="cyclePricing" type="submit" value="Submit" onclick="getPass()">Purchase</button>
+            </form>
+          </div> 
+        </div>
+
+        <div class="pf">
+          <div class = "bo" >
+            <h3>Motor Cycle </h3>
+            <form id ="mototCyclePricing">
+              <div class = "circle" id = "circle1"> <p2 id = "p2">$200 Per Month </p></div>
+              <input type="radio" value="mototCyclePricingPerDay" name="pricing"> 
+              <label for="mototCyclePricingPerDay"><span id = "p21"> $10 Per Day</span> </label><br />
+              <input type="radio" value="mototCyclePricingPerMonth" name="pricing"> 
+              <label for="mototCyclePricingPerMonth"> <span id = "p22">$200 Per Month </span></label><br />
+              <input type="radio" value="mototCyclePricingPerYear" name="pricing"> 
+              <label for="mototCyclePricingPerYear"> <span id = "p23">$1000 Per Year </span></label><br />
+              <button class="submitButton" id = "motorCyclePricingBtn" name="mototCyclePricing" type="submit" value="Submit" onclick="getPass()">Purchase</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="pf">
+          <div class = "bo " >
+            <h3>Four Wheeler </h3>
+            <form id ="fourWheelerPricing">
+              <div class = "circle" id = "circle1"> <p id = "p3">$500 Per Month </p></div>
+              <input type="radio" value="fourWheelerPricingPerDay" name="pricing"> 
+              <label for="fourWheelerPricingPerDay"> <span id = "p31">$20 Per Day </span></label><br />
+              <input type="radio" value="fourWheelerPricingPerMonth" name="pricing"> 
+              <label for="fourWheelerPricingPerMonth"> <span id = "p32">$500 Per Month </span></label><br />
+              <input type="radio" value="fourWheelerPricingPerYear" name="pricing"> 
+              <label for="fourWheelerPricingPerYear"> <span id = "p33">$3500 Per Year</span> </label><br />
+              <button class="submitButton" id = "fourWheelerPricingBtn" name="fourWheelerPricing" type="submit" value="Submit" onclick="getPass()">Purchase</button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="pf">
+          <input class="submitButton" value="DollarToINR" spellcheck="false" onclick="convertCurrency(this)">
+          <input class="submitButton" value="DollarToYen" spellcheck="false" onclick="convertCurrency(this)">
+        </div>
+      </div>
+    </div> 
+    
+    <script>
+      var coll = document.getElementsByClassName("heading");
+      var i;
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.border = "none";
+            content.style.padding = "0px 18px";
+            content.style.maxHeight = null;
+          } else {
+            content.style.padding = "20px 40px";
+            content.style.border = "2px solid #3d6fbf";
+            content.style.maxHeight = content.scrollHeight + "px";
+          } 
+        });
+      }
+      </script>
+    <script src="script.js"></script>
+  </body>
+<!-- // import { Employee as Employee_1 } from "./Employee";
+// import { EmployeeData as EmployeeData_1 } from "./EmployeeData";
+// import { Vehicle as Vehicle_1 } from "./Vehicle";
+// import { VehicleData as VehicleData_1} from "./VehicleData";
+// import { VehiclePass as VehiclePass_1} from "./VehiclePass";
+// import { VehiclePassData as VehiclePassData_1 } from "./VehiclePassData";
+// import { Feedback as Feedback_1 } from "./Feedback";
+// import { FeedbackData as FeedbackData_1 } from "./FeedbackData"; -->
+</html>
+
