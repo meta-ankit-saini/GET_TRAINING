@@ -238,12 +238,9 @@ a.article, a.article:hover {
 }
 
 footer{
-    width:83.5%;
-    height:100px;
-    margin-left: -20px;
+    margin-left: -20px; 
     margin-right: -20px;
-    position:absolute;
-    bottom:0;
+    margin-bottom: -20px;
 }
 
 footer .jumbotron{
@@ -283,10 +280,13 @@ footer .jumbotron{
     height: 600px;
 }
 
-.jumbo-grid-4 {
-    margin-bottom: 80px;
+.footerDiv {
+    text-align: center; 
+    background-color: #f9f9f9;
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+    vertical-align: middle;
 }
-
 
 /* ---------------------------------------------------
     MEDIAQUERIES
