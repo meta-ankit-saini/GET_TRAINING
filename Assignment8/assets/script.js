@@ -1,13 +1,13 @@
-let currEmployeeId = 1000;
-let vehicleId = 100;
+var currEmployeeId = 1000;
+var vehicleId = 100;
 
-var isName = (str) => {
+function isName(str){
   // one or more lowercase and uppercase letter with .
-  let re =/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{2,}$/;
+  var re =/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{2,}$/;
   return re.test(str);
 }
 
-var validateName = (element) => {
+function validateName(element){
   if(isName(element.value)){
     element.style.border = "2px solid green";
   }
@@ -16,13 +16,13 @@ var validateName = (element) => {
   }
 }
 
-var isEmail = (str) => {
+function isEmail(str){
   //mysite@ourearth.com
-  let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(str);
 }
 
-var validateEmail = (element) => {
+function validateEmail(element){
   if(isEmail(element.value)){
     element.style.border = "2px solid green";
   }
@@ -31,13 +31,14 @@ var validateEmail = (element) => {
   }
 }
 
-var isContactNo = (str) => {
+function isContactNo(str){
   // 8 numbers first non zero
-  let re = /^[1-9]{1}[0-9]{7}$/;
+  var re = /^[1-9]{1}[0-9]{7}$/;
   return re.test(str);
 }
 
-var validateContactNo = (element) =>{   
+function validateContactNo(element)
+{   
   if(isContactNo(element.value)){
     element.style.border = "2px solid green";
   }
@@ -46,19 +47,21 @@ var validateContactNo = (element) =>{
   }
 }
 
-var isNormal = (str) =>{   
+function isNormal(str)
+{   
   // at least one number, one lowercase and one uppercase letter
-  let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/;
+  var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/;
   return re.test(str);
 }
 
-var isStrong = (str) => {   
+function isStrong(str)
+{   
   // at least one number, one lowercase and one uppercase letter and special character
-  let re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+  var re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
   return re.test(str);
 }
 
-var validatePassword = (passwordText) => {
+function validatePassword(passwordText) {
   if (isStrong(passwordText.value)) {
     passwordText.style.border = "2px solid green";
     password = passwordText.value;
@@ -73,7 +76,7 @@ var validatePassword = (passwordText) => {
 
 passwordText =  document.getElementById("password");
 confirmPasswordText =  document.getElementById("confirmPassword");
-let validateConfirmPassword = () => {
+function validateConfirmPassword(){
   if (passwordText.value == confirmPasswordText.value) {
     return true;
   }
@@ -81,7 +84,7 @@ let validateConfirmPassword = () => {
 }
 
 
-var confirmPass = (confirmPas) => {
+function confirmPass(confirmPas) {
   if (confirmPas.value != passwordText.value) {
     confirmPas.style.border = "2px solid red";
   } 
@@ -91,13 +94,14 @@ var confirmPass = (confirmPas) => {
 }
 
 
-var isVehicleNoOrModel = (str) => {
+function isVehicleNoOrModel(str){
   // 8 numbers first non zero
-  let re = /^[1-9]{1}[0-9]{5}$/;
+  var re = /^[1-9]{1}[0-9]{5}$/;
   return re.test(str);
 }
 
-var validateVehicleNoOrModel = (element) => {   
+function validateVehicleNoOrModel(element)
+{   
   if(isVehicleNoOrModel(element.value)){
     element.style.border = "2px solid green";
   }
@@ -106,14 +110,15 @@ var validateVehicleNoOrModel = (element) => {
   }
 }
 
-var isEmployeeId = (id) => {
+function isEmployeeId(id){
   if (id > 999 && id < 5001){
     return true;
   }
   return false;
 }
 
-var validateEmployeeId = (element) => {   
+function validateEmployeeId(element)
+{   
   if(isEmployeeId(element.value)){
     element.style.border = "2px solid green";
   }
@@ -122,12 +127,13 @@ var validateEmployeeId = (element) => {
   }
 }
 
-var validateTextArea = (element) => {   
+function validateTextArea(element)
+{   
   element.style.border = "2px solid green";
 }
 
-var findindex = (element , elementArray) => {
-  for (let index = 0; index < elementArray.length ; index++){
+function findindex(element , elementArray){
+  for (var index = 0; index < elementArray.length ; index++){
     if (elementArray[index] == element){
         return index;
     }
@@ -135,13 +141,13 @@ var findindex = (element , elementArray) => {
   return -1;
 }
 
-var avarray = document.getElementsByClassName("av");
-for (let index = 1; index < avarray.length ; index++){
-  avarray[index].style.display = "none";
+var avArray = document.getElementsByClassName("av");
+for (var index = 1; index < avArray.length ; index++){
+  avArray[index].style.display = "none";
 }
 
 
-var validateAV = (element) => {
+function validateAV(element){
   if (element.name == "vehicleCompany" ) {
     return isName(element.value);
   }
@@ -160,26 +166,26 @@ var validateAV = (element) => {
 }
 
 
-var nextAV = (element , e = undefined) => {
+function nextAV(element , e = undefined){
   console.log(element.parentElement,e);
   if((e == undefined || e.keyCode == 13) && validateAV(element)){
     if (e == undefined){
-      var index = findindex(element.parentElement.parentElement , avarray );
+      var index = findindex(element.parentElement.parentElement , avArray );
     }
     else {
-      var index = findindex(element.parentElement , avarray );
+      var index = findindex(element.parentElement , avArray );
     }
-    avarray[index].style.display = "none";
-    avarray[index + 1].style.display = "block";
+    avArray[index].style.display = "none";
+    avArray[index + 1].style.display = "block";
   }
 }
 
 var aeArray = document.getElementsByClassName("ae");
-for (let index = 1; index < aeArray.length ; index++){
+for (var index = 1; index < aeArray.length ; index++){
   aeArray[index].style.display = "none";
 }
 
-var validateAE = (element) => {
+function validateAE(element){
   if (element.name == "fullname" ) {
     return isName(element.value);
   }
@@ -200,7 +206,7 @@ var validateAE = (element) => {
   }
 }
 
-var nextAE = (element , e = undefined) => {
+function nextAE(element , e = undefined){
   console.log(element.parentElement,e);
   if((e == undefined || e.keyCode == 13) && validateAE(element) ){
     if (e == undefined){
@@ -216,11 +222,11 @@ var nextAE = (element , e = undefined) => {
 
 
 var gfArray = document.getElementsByClassName("gf");
-for (let index = 1; index < gfArray.length ; index++){
+for (var index = 1; index < gfArray.length ; index++){
   gfArray[index].style.display = "none";
 }
 
-var validateGF = (element) => {
+function validateGF(element){
   if (element.name == "feedbackEmail" ) {
     return isEmail(element.value);
   }
@@ -229,20 +235,20 @@ var validateGF = (element) => {
   }
 }
 
-var nextGF = (element , e) => {
+function nextGF(element , e){
   if(e.keyCode == 13 && validateGF(element)){
-    let index = findindex(element.parentElement , gfArray );
+    var index = findindex(element.parentElement , gfArray );
     gfArray[index].style.display = "none";
     gfArray[index + 1].style.display = "block";
   }
 }
 
 var pfArray = document.getElementsByClassName("pf");
-for (let index = 1; index < pfArray.length ; index++){
+for (var index = 1; index < pfArray.length ; index++){
   pfArray[index].style.display = "none";
 }
 
-var showPrice = (element) => {
+function showPrice(element){
   pfArray[0].style.display = "none";  
   if (element.value == "cycle"){
     pfArray[1].style.display = "block";
@@ -257,95 +263,95 @@ var showPrice = (element) => {
   element.parentElement.parentElement.parentElement.style.maxHeight = "100%";
 }
 
-var addEmployee = () => {
-  let addEmployeeForm = document.getElementById("addEmployeeForm");
-  let name = addEmployeeForm['fullName'].value;
-  let genderElement = document.getElementsByName("gender");
-  let gender = null;
-  for(let i = 0; i < genderElement.length; i++){
+function addEmployee() {
+  var addEmployeeForm = document.getElementById("addEmployeeForm");
+  var name = addEmployeeForm['fullName'].value;
+  var genderElement = document.getElementsByName("gender");
+  var gender = null;
+  for(var i = 0; i < genderElement.length; i++){
     if(genderElement[i].checked){
         gender = genderElement[i].value;
     }
   }
-  let email = addEmployeeForm['employeeEmail'].value;
-  let password = addEmployeeForm['password'].value;
-  let contactNo = addEmployeeForm['phone'].value;
+  var email = addEmployeeForm['employeeEmail'].value;
+  var password = addEmployeeForm['password'].value;
+  var contactNo = addEmployeeForm['phone'].value;
   currEmployeeId += 1;
   alert( "employee Id : " +currEmployeeId);
   }
 
-var addVehicle = () => {
-  let addVehicleForm = document.getElementById("addVehicleForm");
-  let vehicleModel = addVehicleForm['vehicleModel'].value;
-  let vehicleCompany = addVehicleForm['vehicleCompany'].value;
-  let typeElement = document.getElementsByName("vehicleType");
-  let vehicleType = null;
-  for(let i = 0; i < typeElement.length; i++){
-    if(typeElement[i].checked){
-    vehicleType = typeElement[i].value;
+  function addVehicle() {
+    var addVehicleForm = document.getElementById("addVehicleForm");
+    var vehicleModel = addVehicleForm['vehicleModel'].value;
+    var vehicleCompany = addVehicleForm['vehicleCompany'].value;
+    var typeElement = document.getElementsByName("vehicleType");
+    var vehicleType = null;
+    for(var i = 0; i < typeElement.length; i++){
+      if(typeElement[i].checked){
+        vehicleType = typeElement[i].value;
+      }
     }
+    var vehicleNumber = addVehicleForm['vehicleNumber'].value;
+    var employeeId = addVehicleForm['employeeId'].value;
+    var identification = addVehicleForm['identification'].value;
+    
+    alert("Invalid Employee Id");
+    vehicleId++;
+    }
+
+
+  function  addFeedback(){
+    var giveFeedbackForm = document.getElementById("giveFeedbackForm");
+
+    var date =  giveFeedbackForm['feedbackDate'].value;
+    var email = giveFeedbackForm['feedbackEmail'].value;
+    var subjectOfFeedback = giveFeedbackForm['subjectOfFeedback'].value;
+    var feedbackMessage = giveFeedbackForm['feedbackMessage'].value;
+    alert("feedback register");
   }
-  let vehicleNumber = addVehicleForm['vehicleNumber'].value;
-  let employeeId = addVehicleForm['employeeId'].value;
-  let identification = addVehicleForm['identification'].value;
-
-  alert("Invalid Employee Id");
-  vehicleId++;
-}
 
 
-var addFeedback = () => {
-  let giveFeedbackForm = document.getElementById("giveFeedbackForm");
-  
-  let date =  giveFeedbackForm['feedbackDate'].value;
-  let email = giveFeedbackForm['feedbackEmail'].value;
-  let subjectOfFeedback = giveFeedbackForm['subjectOfFeedback'].value;
-  let feedbackMessage = giveFeedbackForm['feedbackMessage'].value;
-  alert("feedback register");
-}
+  var currencyConversion = { "DollarToINR": 74, "DollarToYen": 60 };
+  var priceList = { "cyclePricingPerDay": 5, "cyclePricingPerMonth": 100, "cyclePricingPerYear": 500 , 
+  "motorCyclePricingPerDay": 10, "motorCyclePricingPerMonth": 200, "motorCyclePricingPerYear": 1000 , 
+  "fourWheelerPricingPerDay": 20, "fourWheelerPricingPerMonth": 500, "fourWheelerPricingPerYear": 3500  };
 
 
-let currencyConversion = { "DollarToINR": 74, "DollarToYen": 60 };
-let priceList = { "cyclePricingPerDay": 5, "cyclePricingPerMonth": 100, "cyclePricingPerYear": 500 , 
-    "motorCyclePricingPerDay": 10, "motorCyclePricingPerMonth": 200, "motorCyclePricingPerYear": 1000 , 
-    "fourWheelerPricingPerDay": 20, "fourWheelerPricingPerMonth": 500, "fourWheelerPricingPerYear": 3500  };
-
-
-let convertCurrency = (element) => {
+function convertCurrency(element){
   currencyConverter = currencyConversion[element.value];
-  let p1 = document.getElementById("p1");
-  let p2 = document.getElementById("p2");
-  let p3 = document.getElementById("p3");
+  var p1 = document.getElementById("p1");
+  var p2 = document.getElementById("p2");
+  var p3 = document.getElementById("p3");
   p1.innerHTML = "<p>  #" + priceList["cyclePricingPerMonth"] * currencyConverter + " Per Month </p>"
   p2.innerHTML = "<p>  #" + priceList["motorCyclePricingPerMonth"] * currencyConverter + " Per Month </p>"
   p3.innerHTML = "<p>  #" + priceList["fourWheelerPricingPerMonth"] * currencyConverter + " Per Month </p>"
-
-  let p11 = document.getElementById("p11");
-  let p12 = document.getElementById("p12");
-  let p13 = document.getElementById("p13");
+  
+  var p11 = document.getElementById("p11");
+  var p12 = document.getElementById("p12");
+  var p13 = document.getElementById("p13");
   p11.innerHTML = "<span>  #" + priceList["cyclePricingPerDay"] * currencyConverter + " Per Month </span>"
   p12.innerHTML = "<span>  #" + priceList["cyclePricingPerMonth"] * currencyConverter + " Per Month </span>"
   p13.innerHTML = "<span>  #" + priceList["cyclePricingPerYear"] * currencyConverter + " Per Month </span>"
 
-  let p21 = document.getElementById("p21");
-  let p22 = document.getElementById("p22");
-  let p23 = document.getElementById("p23");
+  var p21 = document.getElementById("p21");
+  var p22 = document.getElementById("p22");
+  var p23 = document.getElementById("p23");
   p21.innerHTML = "<span>  #" + priceList["motorCyclePricingPerDay"] * currencyConverter + " Per Month </span>"
   p22.innerHTML = "<span>  #" + priceList["motorCyclePricingPerMonth"] * currencyConverter + " Per Month </span>"
   p23.innerHTML = "<span>  #" + priceList["motorCyclePricingPerYear"] * currencyConverter + " Per Month </span>"
 
-  let p31 = document.getElementById("p31");
-  let p32 = document.getElementById("p32");
-  let p33 = document.getElementById("p33");
+  var p31 = document.getElementById("p31");
+  var p32 = document.getElementById("p32");
+  var p33 = document.getElementById("p33");
   p31.innerHTML = "<span>  #" + priceList["fourWheelerPricingPerDay"] * currencyConverter + " Per Month </span>"
   p32.innerHTML = "<span>  #" + priceList["fourWheelerPricingPerMonth"] * currencyConverter + " Per Month </span>"
   p33.innerHTML = "<span>  #" + priceList["motorCyclePricingPerYear"] * currencyConverter + " Per Month </span>"
 }
 
-let  getPass = () => {
-  let priceElement = document.getElementsByName("pricing");
-  let priceDetail = null;
-  for(let i = 0; i < priceElement.length; i++){
+function  getPass(){
+  var priceElement = document.getElementsByName("pricing");
+  var priceDetail = null;
+  for(var i = 0; i < priceElement.length; i++){
     if(priceElement[i].checked){
       priceDetail = priceElement[i].value;
     }
