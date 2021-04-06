@@ -295,7 +295,7 @@ function addEmployee() {
     var employeeId = addVehicleForm['employeeId'].value;
     var identification = addVehicleForm['identification'].value;
     
-    alert("Invalid Employee Id");
+    alert("Vehicle Id"+vehicleId);
     vehicleId++;
     }
 
