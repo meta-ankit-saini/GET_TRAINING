@@ -334,7 +334,7 @@ var addVehicle = function () {
     var employeeId = addVehicleForm['employeeId'].value;
     var identification = addVehicleForm['identification'].value;
     vehicleData.addVehicle(new Vehicle(vehicleCompany, vehicleModel, vehicleType, vehicleNumber, identification, employeeId));
-    alert("Invalid Employee Id");
+    alert("Vehicle Id" + vehicleId);
     vehicleId++;
 };
 var feedbacData = new FeedbackData();

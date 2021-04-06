@@ -21,7 +21,7 @@ class Employee {
 }
 
 class EmployeeData {
-  private EmployeeList : any;
+  private EmployeeList : Employee[];
   public constructor(){
     this.EmployeeList = [];
   }
@@ -46,7 +46,7 @@ class Feedback {
 }
 
 class FeedbackData {
-  private FeedbackList : any;
+  private FeedbackList : Feedback[];
   public constructor(){
     this.FeedbackList = [];
   }
@@ -75,7 +75,7 @@ class Vehicle {
 }
 
 class VehicleData {
-  private VehicleList : any;
+  private VehicleList : Vehicle[];
   public constructor(){
     this.VehicleList = [];
   }
@@ -97,7 +97,7 @@ class VehiclePass {
 }
 
 class VehiclePassData {
-  private VehiclePassList : any;
+  private VehiclePassList : VehiclePass[];
   public constructor(){
     this.VehiclePassList = [];
   }
@@ -107,13 +107,13 @@ class VehiclePassData {
   }
 }
 
-var isName : any = (str : string) => {
+const isName : any = (str : string) : boolean => {
   // one or more lowercase and uppercase letter with .
   let re : RegExp  = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{2,}$/;
   return re.test(str);
 }
 
-var validateName : any = (element : any) => {
+const validateName : any = (element : any) : void => {
   if(isName(element.value)){
     element.style.border = "2px solid green";
   }
@@ -122,13 +122,13 @@ var validateName : any = (element : any) => {
   }
 }
 
-var isEmail : any = (str : string) => {
+const isEmail : any = (str : string) : boolean => {
   //mysite@ourearth.com
-  let re : RegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re : RegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(str);
 }
 
-var validateEmail : any = (element : any) => {
+const validateEmail : any = (element : any) : void => {
   if(isEmail(element.value)){
     element.style.border = "2px solid green";
   }
@@ -137,13 +137,13 @@ var validateEmail : any = (element : any) => {
   }
 }
 
-var isContactNo : any = (str : string) => {
+const isContactNo : any = (str : string) : boolean => {
   // 8 numbers first non zero
-  let re : RegExp = /^[1-9]{1}[0-9]{7}$/;
+  const re : RegExp = /^[1-9]{1}[0-9]{7}$/;
   return re.test(str);
 }
 
-var validateContactNo : any = (element : any) =>{   
+const validateContactNo : any = (element : any): void =>{   
   if(isContactNo(element.value)){
     element.style.border = "2px solid green";
   }
@@ -152,19 +152,19 @@ var validateContactNo : any = (element : any) =>{
   }
 }
 
-var isNormal : any = (str : string) =>{   
+const isNormal : any = (str : string) : boolean =>{   
   // at least one number, one lowercase and one uppercase letter
-  let re:RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/;
+  const re:RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/;
   return re.test(str);
 }
 
-var isStrong : any = (str : string) => {   
+const isStrong : any = (str : string) : boolean => {   
   // at least one number, one lowercase and one uppercase letter and special character
-  let re : RegExp =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+  const re : RegExp =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
   return re.test(str);
 }
 
-var validatePassword : any = (passwordText : any) => {
+const validatePassword : any = (passwordText : any) : void => {
   if (isStrong(passwordText.value)) {
     passwordText.style.border = "2px solid green";
   }
@@ -178,7 +178,7 @@ var validatePassword : any = (passwordText : any) => {
 
 let passwordText : any =  document.getElementById("password");
 let confirmPasswordText : any =  document.getElementById("confirmPassword");
-let validateConfirmPassword : any = () => {
+const validateConfirmPassword : any = () : boolean => {
   if (passwordText.value == confirmPasswordText.value) {
     return true;
   }
@@ -186,7 +186,7 @@ let validateConfirmPassword : any = () => {
 }
 
 
-var confirmPass : any = (confirmPas : any) => {
+const confirmPass : any = (confirmPas : any) : void => {
   if (confirmPas.value != passwordText.value) {
     confirmPas.style.border = "2px solid red";
   } 
@@ -196,13 +196,13 @@ var confirmPass : any = (confirmPas : any) => {
 }
 
 
-var isVehicleNoOrModel : any = (str : string) => {
+const isVehicleNoOrModel : any = (str : string) : boolean => {
   // 8 numbers first non zero
-  let re : RegExp = new RegExp('^[1-9]{1}[0-9]{5}$');
+  const re : RegExp = new RegExp('^[1-9]{1}[0-9]{5}$');
   return re.test(str);
 }
 
-var validateVehicleNoOrModel : any = (element : any) => {   
+const validateVehicleNoOrModel : any = (element : any) : void => {   
   if(isVehicleNoOrModel(element.value)){
     element.style.border = "2px solid green";
   }
@@ -211,14 +211,14 @@ var validateVehicleNoOrModel : any = (element : any) => {
   }
 }
 
-var isEmployeeId : any = (id : number) => {
+const isEmployeeId : any = (id : number) : boolean => {
   if (id > 999 && id < 5001){
     return true;
   }
   return false;
 }
 
-var validateEmployeeId : any = (element:any) => {   
+const validateEmployeeId : any = (element:any)  => {   
   if(isEmployeeId(element.value)){
     element.style.border = "2px solid green";
   }
@@ -227,11 +227,11 @@ var validateEmployeeId : any = (element:any) => {
   }
 }
 
-var validateTextArea : any = (element : any) => {   
+const validateTextArea : any = (element : any) => {   
   element.style.border = "2px solid green";
 }
 
-var findindex : any = (element : any , elementArray : any) => {
+const findindex : any = (element : any , elementArray : any) : number => {
   for (let index : number = 0; index < elementArray.length ; index++){
     if (elementArray[index] == element){
         return index;
@@ -240,13 +240,13 @@ var findindex : any = (element : any , elementArray : any) => {
   return -1;
 }
 
-var avarray : any = document.getElementsByClassName("av");
+let avarray : any = document.getElementsByClassName("av");
 for (let index : number = 1; index < avarray.length ; index++){
   avarray[index].style.display = "none";
 }
 
 
-var validateAV : any = (element : any) => {
+const validateAV : any = (element : any) : boolean => {
   if (element.name == "vehicleCompany" ) {
     return isName(element.value);
   }
@@ -265,7 +265,7 @@ var validateAV : any = (element : any) => {
 }
 
 
-var nextAV = (element : any , e : any = undefined) => {
+const nextAV = (element : any , e : any = undefined) : void => {
   console.log(element.parentElement,e);
   if((e == undefined || e.keyCode == 13) && validateAV(element)){
     if (e == undefined){
@@ -279,12 +279,12 @@ var nextAV = (element : any , e : any = undefined) => {
   }
 }
 
-var aeArray : any = document.getElementsByClassName("ae");
+const aeArray : any = document.getElementsByClassName("ae");
 for (let index : number = 1; index < aeArray.length ; index++){
   aeArray[index].style.display = "none";
 }
 
-var validateAE : any = (element : any) => {
+const validateAE : any = (element : any) : boolean => {
   if (element.name == "fullname" ) {
     return isName(element.value);
   }
@@ -305,7 +305,7 @@ var validateAE : any = (element : any) => {
   }
 }
 
-var nextAE : any = (element : any , e : any = undefined) => {
+const nextAE : any = (element : any , e : any = undefined) : void => {
   console.log(element.parentElement,e);
   if((e == undefined || e.keyCode == 13) && validateAE(element) ){
     if (e == undefined){
@@ -320,12 +320,12 @@ var nextAE : any = (element : any , e : any = undefined) => {
 }
 
 
-var gfArray : any = document.getElementsByClassName("gf");
+let gfArray : any = document.getElementsByClassName("gf");
 for (let index : number = 1; index < gfArray.length ; index++){
   gfArray[index].style.display = "none";
 }
 
-var validateGF : any = (element : any) => {
+const validateGF : any = (element : any) : boolean => {
   if (element.name == "feedbackEmail" ) {
     return isEmail(element.value);
   }
@@ -334,20 +334,20 @@ var validateGF : any = (element : any) => {
   }
 }
 
-var nextGF : any = (element : any , e : any) => {
+const nextGF : any = (element : any , e : any) : void => {
   if(e.keyCode == 13 && validateGF(element)){
-    let index : number = findindex(element.parentElement , gfArray );
+    const index : number = findindex(element.parentElement , gfArray );
     gfArray[index].style.display = "none";
     gfArray[index + 1].style.display = "block";
   }
 }
 
-var pfArray : any = document.getElementsByClassName("pf");
+let pfArray : any = document.getElementsByClassName("pf");
 for (let index : number = 1; index < pfArray.length ; index++){
   pfArray[index].style.display = "none";
 }
 
-var showPrice : any = (element : any) => {
+const showPrice : any = (element : any) : void => {
   pfArray[0].style.display = "none";  
   if (element.value == "cycle"){
     pfArray[1].style.display = "block";
@@ -362,73 +362,71 @@ var showPrice : any = (element : any) => {
   element.parentElement.parentElement.parentElement.style.maxHeight = "100%";
 }
 
-var employeeData : EmployeeData = new EmployeeData();
+let employeeData : EmployeeData = new EmployeeData();
 
-var addEmployee : any = () => {
-  let addEmployeeForm : any = document.getElementById("addEmployeeForm");
-  let name : string = addEmployeeForm['fullName'].value;
-  let genderElement : any = document.getElementsByName("gender");
+const addEmployee : any = () : void => {
+  const addEmployeeForm : any = document.getElementById("addEmployeeForm");
+  const name : string = addEmployeeForm['fullName'].value;
+  const genderElement : any = document.getElementsByName("gender");
   let gender : string = "notAssigned";;
   for(let index = 0; index < genderElement.length; index++){
     if(genderElement[index].checked){
         gender = genderElement[index].value;
     }
   }
-  let email : string = addEmployeeForm['employeeEmail'].value;
-  let password : string = addEmployeeForm['password'].value;
-  let contactNo : string = addEmployeeForm['phone'].value;
+  const email : string = addEmployeeForm['employeeEmail'].value;
+  const password : string = addEmployeeForm['password'].value;
+  const contactNo : string = addEmployeeForm['phone'].value;
   employeeData.addEmployee(new Employee(currEmployeeId , name , gender , email , contactNo , password));
   currEmployeeId += 1;
   alert( "employee Id : " +currEmployeeId);
 }
 
-var vehicleData : VehicleData = new VehicleData();
+let vehicleData : VehicleData = new VehicleData();
 
-var addVehicle : any = () => {
-  let addVehicleForm : any = document.getElementById("addVehicleForm");
-  let vehicleModel : string = addVehicleForm['vehicleModel'].value;
-  let vehicleCompany : string = addVehicleForm['vehicleCompany'].value;
-  let typeElement : any = document.getElementsByName("vehicleType");
+const addVehicle : any = () : void => {
+  const addVehicleForm : any = document.getElementById("addVehicleForm");
+  const vehicleModel : string = addVehicleForm['vehicleModel'].value;
+  const vehicleCompany : string = addVehicleForm['vehicleCompany'].value;
+  const typeElement : any = document.getElementsByName("vehicleType");
   let vehicleType : string = "notAssigned";
   for(let index : number = 0; index < typeElement.length; index++){
     if(typeElement[index].checked){
     vehicleType = typeElement[index].value;
     }
   }
-  let vehicleNumber : string = addVehicleForm['vehicleNumber'].value;
-  let employeeId : number  = addVehicleForm['employeeId'].value;
-
-  let identification : string = addVehicleForm['identification'].value;
+  const vehicleNumber : string = addVehicleForm['vehicleNumber'].value;
+  const employeeId : number  = addVehicleForm['employeeId'].value;
+  const identification : string = addVehicleForm['identification'].value;
   vehicleData.addVehicle(new Vehicle(vehicleCompany , vehicleModel , vehicleType, vehicleNumber
     , identification , employeeId));
-  alert("Invalid Employee Id");
+  alert("Vehicle Id" + vehicleId);
   vehicleId++;
 }
 
-var feedbacData : FeedbackData = new FeedbackData();
+let feedbacData : FeedbackData = new FeedbackData();
 
-var addFeedback : any = () => {
-  let giveFeedbackForm : any = document.getElementById("giveFeedbackForm");
-  
-  let date : Date =  giveFeedbackForm['feedbackDate'].value;
-  let email : string = giveFeedbackForm['feedbackEmail'].value;
-  let subjectOfFeedback : string = giveFeedbackForm['subjectOfFeedback'].value;
-  let feedbackMessage : string = giveFeedbackForm['feedbackMessage'].value;
+const addFeedback : any = () : void => {
+  const giveFeedbackForm : any = document.getElementById("giveFeedbackForm");
+  const date : Date =  giveFeedbackForm['feedbackDate'].value;
+  const email : string = giveFeedbackForm['feedbackEmail'].value;
+  const subjectOfFeedback : string = giveFeedbackForm['subjectOfFeedback'].value;
+  const feedbackMessage : string = giveFeedbackForm['feedbackMessage'].value;
   feedbacData.addFeedback(new Feedback(date, email , subjectOfFeedback , feedbackMessage));
   alert("feedback register");
 }
 
 
-let currencyConversion : any   = {
+const currencyConversion : any   = {
 	"DollarToINR": 74,
 	"DollarToYen": 60
 };
-let priceList : any = { 
+const priceList : any = { 
   "cyclePricingPerDay": 5, "cyclePricingPerMonth": 100, "cyclePricingPerYear": 500 , 
   "motorCyclePricingPerDay": 10, "motorCyclePricingPerMonth": 200, "motorCyclePricingPerYear": 1000 , 
   "fourWheelerPricingPerDay": 20, "fourWheelerPricingPerMonth": 500, "fourWheelerPricingPerYear": 3500  };
 
-let convertCurrency = (element : any) => {
+const convertCurrency = (element : any) : void => {
   let currencyConverter = currencyConversion[element.value];
   let p1 : any = document.getElementById("p1");
   let p2 : any = document.getElementById("p2");
@@ -459,10 +457,10 @@ let convertCurrency = (element : any) => {
   p33.innerHTML = "<span>  #" + priceList["motorCyclePricingPerYear"] * currencyConverter + " Per Month </span>"
 }
 
-var vehiclePassData : VehiclePassData = new VehiclePassData();
+let vehiclePassData : VehiclePassData = new VehiclePassData();
 
-let  getPass : any = () => {
-  let priceElement : any = document.getElementsByName("pricing");
+const  getPass : any = () : void => {
+  const priceElement : any = document.getElementsByName("pricing");
   let priceDetail : string  = "notAssigned";
   for(let index : number = 0; index < priceElement.length; index++){
     if(priceElement[index].checked){
