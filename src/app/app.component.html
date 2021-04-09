@@ -1,0 +1,140 @@
+<header >
+  <nav class="navbar navbar-light bg-light shadow">
+    <a href= "#" (click)="open(content1)">My Task Tracker</a>
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">New Task</button>
+  </nav>
+</header>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <div class="input-group">
+          <input id="title" class="form-control" name="dp">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <div class="input-group">
+          <input id="description" class="form-control"  name="dp" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateOfCompletion">Date of Completion</label>
+        <div class="input-group">
+          <input type="date" id="dateOfCompletion" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <div class="input-group">
+          <input id="priority" class="form-control" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="addTask();  modal.close('Save click'); ">Create Task</button>
+  </div>
+</ng-template>
+
+
+<ng-template #content1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="updateTitle">Title</label>
+        <div class="input-group">
+          <input id="updateTitle" placeholder="Only title is required for deletion" class="form-control" name="dp">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="updateDateOfCompletion">Date of completion</label>
+        <div class="input-group">
+          <input type="date" id="updateDateOfCompletion" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="updatePriority">Priority</label>
+        <div class="input-group">
+          <input id="updatePriority" class="form-control" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="updaetTask();  modal.close('Save click'); ">Update</button>
+    <button type="button" class="btn btn-outline-dark" (click)="removeTask();  modal.close('Save click'); ">Delete</button>
+  </div>
+</ng-template>
+
+<div class="jumbo-grid">
+  <div  class="row">
+    
+    <div class="example-container col-md-4">
+      <div class="jumbotron " style="text-align: center;">
+        <span> New </span>
+        <div
+          cdkDropList
+          [cdkDropListData]="listOfTask"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListConnectedTo]="doneList"
+          #todoList="cdkDropList">
+          <div class="example-box" *ngFor="let item of listOfTask" [ngClass]="{'bg-info': item.priority.toLowerCase() == 'medium', 'bg-warning': item.priority.toLowerCase() == 'high', 'bg-success': item.priority.toLowerCase() == 'low'}" cdkDrag>
+            <p>{{item.title}}</p> 
+            <p>{{item.description}}</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container col-md-4" (click)="addCompleteTask()">
+      <div class="jumbotron " style="text-align: center;">
+        <span> In Progress </span>
+        <div
+          cdkDropList
+          [cdkDropListData]="listOfInProgress"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+          #doneList="cdkDropList">
+          <div class="example-box" *ngFor="let item of listOfInProgress" [ngClass]="{'bg-info': item.priority.toLowerCase() == 'medium', 'bg-warning': item.priority.toLowerCase() == 'high', 'bg-success': item.priority.toLowerCase() == 'low'}" cdkDrag >
+            {{item.title}} <br> {{item.description}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container col-md-4" >
+      <div class="jumbotron  " style="text-align: center;">
+        <span> Completed </span>
+        <div
+          cdkDropList
+          [cdkDropListData]="completed"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of listOfCompleted " [ngClass]="{'bg-info': item.priority.toLowerCase() == 'medium', 'bg-warning': item.priority.toLowerCase() == 'high', 'bg-success': item.priority.toLowerCase() == 'low'}" cdkDrag>{{item.title}} <br> {{item.description}}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
